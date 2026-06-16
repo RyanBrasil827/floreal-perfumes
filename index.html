@@ -3,739 +3,938 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Floreal | Experiência de Alta Perfumaria</title>
-    
-    <!-- Fontes Premium -->
+    <title>Floreal | Perfumaria Artesanal Sustentável</title>
+    <meta name="description" content="Descubra a Floreal, referência em perfumaria artesanal sustentável, criando fragrâncias únicas inspiradas em emoções, memórias e natureza.">
+    <meta name="keywords" content="perfumaria artesanal, sustentabilidade, perfumes de luxo, cosméticos orgânicos, Floreal">
+    <meta name="author" content="Floreal Haute Parfumerie">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://seunome.github.io/floreal/">
+    <meta property="og:title" content="Floreal | Perfumaria Artesanal Sustentável">
+    <meta property="og:description" content="Fragrâncias de luxo inspiradas na natureza e criadas com responsabilidade ecológica extrema. Conheça nossa assinatura olfativa.">
+    <meta property="og:image" content="https://loremflickr.com/1200/630/perfume,luxury">
+
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="Floreal | Perfumaria Artesanal Sustentável">
+    <meta property="twitter:description" content="Fragrâncias de luxo inspiradas na natureza.">
+    <meta property="twitter:image" content="https://loremflickr.com/1200/630/perfume,luxury">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
     <style>
-        /* ==========================================
-           CSS: VARIÁVEIS E CONFIGURAÇÕES BASE
-           ========================================== */
+        /* INJEÇÃO AUTOMÁTICA DO ARQUIVO: css/style.css */
         :root {
-            --primary: #0B2216;       /* Verde Floresta Profundo */
-            --accent: #C5A059;        /* Dourado Champanhe Fosco */
-            --accent-dark: #A37F3D;
-            --text-dark: #1E221F;
-            --text-light: #F4F6F4;
-            --bg-light: #FAF9F5;      /* Off-White Luxuoso */
-            --bg-card: rgba(255, 255, 255, 0.85);
-            --font-base: 16px;
-            --transition-smooth: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+            --primary: #2D6A4F;
+            --secondary: #40916C;
+            --accent: #95D5B2;
+            --light: #D8F3DC;
+            --luxury: #C9A227;
+            --white: #FFFFFF;
+            --text: #1B1B1B;
+            --font-title: 'Playfair Display', serif;
+            --font-body: 'Poppins', sans-serif;
+            --transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            font-size: var(--font-base);
-            color: var(--text-dark);
-            background-color: var(--bg-light);
-            line-height: 1.8;
-            overflow-x: hidden;
-            position: relative;
-            transition: var(--transition-smooth);
-        }
-
-        h1, h2, h3, h4 {
-            font-family: 'Cinzel', serif;
-            letter-spacing: 3px;
-        }
-
-        /* ALTO CONTRASTE (ACESSIBILIDADE VIA JS) */
-        body.alto-contraste {
-            --primary: #FFFFFF;
-            --accent: #FFFF00;
-            --text-dark: #FFFFFF;
-            --text-light: #000000;
-            --bg-light: #000000;
-            --bg-card: #121212;
-        }
-        body.alto-contraste header, 
-        body.alto-contraste .card,
-        body.alto-contraste .interactive-box {
-            border: 2px solid #FFF !important;
-        }
-
-        /* ==========================================
-           CSS: ANIMAÇÕES E EFEITOS VISUAIS
-           ========================================== */
-        #petals-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            pointer-events: none;
-            z-index: 1;
-            overflow: hidden;
-        }
-
-        .petal {
-            position: absolute;
-            background: linear-gradient(135deg, #d90429, #ef233c);
-            border-radius: 0 70% 40% 70%;
-            opacity: 0.85;
-            animation: fall linear infinite;
-        }
-
-        @keyframes fall {
-            0 { transform: translateY(-20px) rotate(0deg); opacity: 0; }
-            10% { opacity: 0.8; }
-            90% { opacity: 0.8; }
-            100% { transform: translateY(105vh) rotate(720deg) translateX(120px); opacity: 0; }
-        }
-
-        /* Efeito Fade-In Dinâmico para as seções */
-        .reveal {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 1s ease, transform 1s ease;
-        }
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Sistema de Notificação Toast */
-        #toast-container {
-            position: fixed;
-            top: 30px;
-            right: 30px;
-            z-index: 10000;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .toast {
-            background-color: var(--primary);
-            color: var(--bg-light);
-            border-left: 5px solid var(--accent);
-            padding: 15px 25px;
-            font-family: 'Cinzel', serif;
-            font-size: 0.9em;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-            transform: translateX(120%);
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        .toast.show {
-            transform: translateX(0);
-        }
-
-        /* ==========================================
-           CSS: ESTRUTURA DE LAYOUT
-           ========================================== */
-        header {
-            background-color: rgba(250, 249, 245, 0.85);
-            padding: 20px 8%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 20px rgba(0,0,0,0.02);
-            position: sticky;
-            top: 0;
-            z-index: 999;
-            backdrop-filter: blur(15px);
-            border-bottom: 1px solid rgba(197, 160, 89, 0.15);
-        }
-
-        header h1 {
-            font-size: 1.8em;
-            color: var(--primary);
-            letter-spacing: 8px;
-            font-weight: 900;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 30px;
-            align-items: center;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: var(--text-dark);
-            font-weight: 600;
-            text-transform: uppercase;
-            font-size: 0.75em;
-            letter-spacing: 2px;
-            transition: var(--transition-smooth);
-            padding: 8px 12px;
-        }
-
-        nav a:hover {
-            color: var(--accent);
-            background-color: rgba(197, 160, 89, 0.05);
-            border-radius: 4px;
-        }
-
-        .cart-badge {
-            background: var(--primary);
-            color: white;
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 0.8em;
-            font-weight: bold;
-            border: 1px solid var(--accent);
-        }
-
-        /* Hero Splash - IMAGEM DE FUNDO ATUALIZADA (BLINDADA) */
-        .hero {
-            background-image: linear-gradient(rgba(11, 34, 22, 0.65), rgba(11, 34, 22, 0.85)), 
-                             url('https://loremflickr.com/1920/1080/perfume,luxury,flowers');
-            background-size: cover;
-            background-position: center;
-            height: 55vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            text-align: center;
-            padding: 0 20px;
-        }
-
-        .hero h2 {
-            font-size: 3.5em;
-            margin-bottom: 15px;
-            text-shadow: 0 4px 10px rgba(0,0,0,0.3);
-        }
-
-        section {
-            padding: 90px 8%;
-            max-width: 1400px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 2;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.2em;
-            color: var(--primary);
-            margin-bottom: 50px;
-            text-transform: uppercase;
-        }
-
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 60px;
-            height: 2px;
-            background-color: var(--accent);
-            margin: 15px auto 0;
-        }
-
-        .grid-2 {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-        }
-
-        .img-wrapper img {
-            width: 100%;
-            height: 450px;
-            object-fit: cover;
-            border-radius: 6px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.06);
-            transition: var(--transition-smooth);
-        }
-        .img-wrapper:hover img {
-            transform: scale(1.02);
-        }
-
-        /* Vitrine de Produtos */
-        .produtos-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 35px;
-        }
-
-        .card {
-            background: var(--bg-card);
-            border: 1px solid rgba(197, 160, 89, 0.15);
-            backdrop-filter: blur(10px);
-            overflow: hidden;
-            transition: var(--transition-smooth);
-            border-radius: 8px;
-            text-align: center;
-        }
-
-        .card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 25px 45px rgba(11, 34, 22, 0.1);
-            border-color: var(--accent);
-        }
-
-        .card-img { height: 340px; overflow: hidden; }
-        .card-img img { width: 100%; height: 100%; object-fit: cover; }
-        .card-info { padding: 30px; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; font-size: 16px; }
+        body { font-family: var(--font-body); color: var(--text); background-color: #FAFBF9; overflow-x: hidden; line-height: 1.7; }
         
-        .btn-action {
-            background-color: var(--primary);
-            color: white;
-            border: 1px solid var(--accent);
-            padding: 12px 20px;
-            margin-top: 20px;
-            cursor: pointer;
-            font-family: 'Cinzel', serif;
-            font-size: 0.8em;
-            width: 100%;
-            letter-spacing: 2px;
-            transition: var(--transition-smooth);
-        }
-        .btn-action:hover {
-            background-color: var(--accent);
-            color: var(--primary);
+        /* ACESSIBILIDADE FOCAL */
+        a:focus, button:focus, input:focus, select:focus, textarea:focus {
+            outline: 3px dashed var(--luxury);
+            outline-offset: 4px;
         }
 
-        /* ==========================================
-           CSS: LABORATÓRIO INTERATIVO (JS WORK)
-           ========================================== */
-        .lab-container {
-            background-color: #F1ECE3;
-            border-radius: 12px;
-            padding: 45px;
-            margin-top: 20px;
-            transition: var(--transition-smooth);
+        /* SCREEN LOADER ANIMAÇÃO */
+        #loader {
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            background-color: var(--primary); z-index: 10000;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            transition: opacity 0.6s ease, visibility 0.6s;
         }
-        body.alto-contraste .lab-container { background-color: #111; }
+        .loader-logo {
+            font-family: var(--font-title); color: var(--white); font-size: 2.5rem;
+            letter-spacing: 6px; margin-bottom: 20px; opacity: 0; animation: fadeInOut 2s infinite ease-in-out;
+        }
+        .loader-bar { width: 100px; height: 2px; background: rgba(255,255,255,0.2); position: relative; overflow: hidden; }
+        .loader-bar::after {
+            content: ''; display: block; width: 40px; height: 100%; background: var(--luxury);
+            position: absolute; left: -40px; animation: loadMove 1.2s infinite linear;
+        }
+        @keyframes fadeInOut { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
+        @keyframes loadMove { 0% { left: -40px; } 100% { left: 100px; } }
 
-        .interactive-box {
-            background: white;
-            padding: 35px;
-            border-radius: 8px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.02);
-            margin-bottom: 35px;
-            transition: var(--transition-smooth);
-        }
-        body.alto-contraste .interactive-box { background: #000; }
+        /* REVEAL SYSTEM ON SCROLL */
+        .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease, transform 0.8s ease; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
 
-        .quiz-flex {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin: 25px 0;
+        /* CONTROLES TOTAIS DO HEADER FIXO */
+        header {
+            position: fixed; top: 0; left: 0; width: 100%; padding: 25px 8%;
+            display: flex; justify-content: space-between; align-items: center;
+            z-index: 999; transition: var(--transition);
         }
+        header.scrolled {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            padding: 15px 8%; box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
+            border-bottom: 1px solid rgba(45, 106, 79, 0.1);
+        }
+        header.scrolled .logo, header.scrolled nav a { color: var(--primary); }
+        .logo { font-family: var(--font-title); font-size: 1.8rem; letter-spacing: 4px; color: var(--white); text-decoration: none; font-weight: 700; }
+        nav { display: flex; align-items: center; gap: 2rem; }
+        nav ul { display: flex; list-style: none; gap: 1.5rem; }
+        nav a { text-decoration: none; color: var(--white); font-weight: 400; font-size: 0.9rem; transition: var(--transition); }
+        nav a:hover { color: var(--luxury); }
+        .btn-cta-nav {
+            background: transparent; border: 1px solid var(--luxury); color: var(--luxury) !important;
+            padding: 10px 20px; border-radius: 0; font-family: var(--font-title); font-weight: 600; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px;
+        }
+        .btn-cta-nav:hover { background: var(--luxury); color: var(--white) !important; }
 
-        .custom-btn {
-            background: transparent;
-            border: 2px solid var(--primary);
-            color: var(--primary);
-            padding: 12px 28px;
-            cursor: pointer;
-            font-family: 'Cinzel', serif;
-            font-weight: bold;
-            letter-spacing: 1px;
-            transition: var(--transition-smooth);
-        }
-        .custom-btn:hover {
-            background: var(--primary);
-            color: white;
-        }
+        /* MENU MOBILE */
+        .menu-hamburger { display: none; cursor: pointer; background: none; border: none; z-index: 1000; }
+        .menu-hamburger span { display: block; width: 28px; height: 2px; background: var(--white); margin: 6px 0; transition: 0.4s; }
+        header.scrolled .menu-hamburger span { background: var(--primary); }
 
-        .panel-output {
-            margin-top: 20px;
-            padding: 20px;
-            background: #FAF9F5;
-            border-left: 4px solid var(--accent);
-            font-style: italic;
-            display: none;
-            animation: fadeInUp 0.5s forwards;
+        /* HERO SECTION COM MATRIZ PARALLAX */
+        .hero {
+            height: 100vh; position: relative; display: flex; align-items: center; padding: 0 8%;
+            background: linear-gradient(rgba(11, 33, 22, 0.5), rgba(11, 33, 22, 0.75)), url('https://loremflickr.com/1920/1080/perfume,luxury,nature') no-repeat center center/cover;
+            background-attachment: fixed; color: var(--white);
         }
-        body.alto-contraste .panel-output { background: #222; }
+        .hero-content { max-width: 650px; z-index: 2; }
+        .hero-content h1 { font-family: var(--font-title); font-size: 3.5rem; line-height: 1.2; margin-bottom: 20px; font-weight: 400; }
+        .hero-content p { font-size: 1.1rem; margin-bottom: 35px; color: var(--light); font-weight: 300; }
+        .hero-buttons { display: flex; gap: 15px; }
+        .btn-premium {
+            display: inline-block; padding: 15px 35px; font-family: var(--font-title); font-weight: 600; text-transform: uppercase;
+            font-size: 0.85rem; letter-spacing: 2px; text-decoration: none; border-radius: 0; transition: var(--transition); cursor: pointer;
+        }
+        .btn-solid { background-color: var(--luxury); color: var(--white); border: 1px solid var(--luxury); }
+        .btn-solid:hover { background-color: transparent; color: var(--luxury); }
+        .btn-outline { background-color: transparent; color: var(--white); border: 1px solid var(--white); }
+        .btn-outline:hover { background-color: var(--white); color: var(--primary); }
 
-        /* Perfume Simulator UI */
-        .form-select {
-            width: 100%;
-            padding: 12px;
-            margin-top: 6px;
-            margin-bottom: 20px;
-            border: 1px solid #DDD;
-            background-color: #FFF;
-            font-family: 'Inter', sans-serif;
-        }
+        /* CONFIGURAÇÕES GERAIS DE SEÇÃO */
+        section { padding: 120px 8%; position: relative; }
+        .section-header { text-align: center; margin-bottom: 80px; }
+        .section-header h2 { font-family: var(--font-title); font-size: 2.5rem; color: var(--primary); position: relative; display: inline-block; padding-bottom: 15px; }
+        .section-header h2::after { content: ''; display: block; width: 50px; height: 1px; background: var(--luxury); position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); }
+        .section-header p { font-size: 0.95rem; color: #555; margin-top: 15px; text-transform: uppercase; letter-spacing: 2px; }
 
-        /* O Frasco de Perfume Construído por CSS Puro */
-        .bottle-render {
-            border: 3px solid var(--accent);
-            padding: 40px 20px;
-            text-align: center;
-            background: linear-gradient(180deg, rgba(255,255,255,0.95) 0%, rgba(197,160,89,0.15) 100%);
-            border-radius: 30px 30px 15px 15px;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.05);
-            position: relative;
-            max-width: 320px;
-            margin: 0 auto;
-        }
-        .bottle-cap {
-            width: 60px;
-            height: 25px;
-            background: var(--accent);
-            margin: -65px auto 40px;
-            border-radius: 4px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
-        .bottle-label {
-            border: 1px solid var(--accent);
-            background: white;
-            padding: 20px 10px;
-            margin: 15px 0;
-        }
+        /* GRID DA TIMELINE DA SOBRE A FLOREAL */
+        .timeline { position: relative; max-width: 1000px; margin: 0 auto; }
+        .timeline::after { content: ''; position: absolute; width: 1px; background-color: var(--light); top: 0; bottom: 0; left: 50%; margin-left: -0.5px; }
+        .timeline-container { padding: 10px 40px; position: relative; background-color: inherit; width: 50%; }
+        .timeline-container::after { content: ''; position: absolute; width: 12px; height: 12px; right: -6px; background-color: var(--luxury); top: 25px; border-radius: 50%; z-index: 1; }
+        .left { left: 0; } .right { left: 50%; }
+        .right::after { left: -6px; }
+        .timeline-content { padding: 30px; background: var(--white); border-radius: 4px; box-shadow: 0 10px 30px rgba(0,0,0,0.02); border-top: 3px solid var(--primary); }
+        .timeline-content h3 { font-family: var(--font-title); color: var(--luxury); font-size: 1.5rem; margin-bottom: 5px; }
+        .timeline-content h4 { font-size: 1.1rem; color: var(--primary); margin-bottom: 10px; font-weight: 500; }
+        .timeline-content p { font-size: 0.9rem; color: #555; }
 
-        /* Widgets de Controle Fixo */
-        .widget-fixed {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: var(--primary);
-            padding: 12px 20px;
-            border-radius: 30px;
-            display: flex;
-            gap: 8px;
-            z-index: 10000;
-            border: 1px solid var(--accent);
-            align-items: center;
+        /* MISSÃO, VISÃO E VALORES COM GLASSMORPHISM */
+        .mvv-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; }
+        .mvv-card {
+            background: rgba(255, 255, 255, 0.7); border: 1px solid rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+            padding: 40px; border-radius: 8px; text-align: center; transition: var(--transition);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.02);
         }
-        .widget-btn {
-            background: transparent;
-            border: 1px solid rgba(255,255,255,0.25);
-            color: white;
-            padding: 6px 14px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-size: 0.8em;
-            font-weight: bold;
-            transition: var(--transition-smooth);
-        }
-        .widget-btn:hover { background: var(--accent); color: var(--primary); }
+        .mvv-card:hover { transform: translateY(-10px); border-color: var(--accent); background: var(--white); box-shadow: 0 20px 40px rgba(45,106,79,0.06); }
+        .mvv-icon { font-size: 2.5rem; color: var(--primary); margin-bottom: 20px; }
+        .mvv-card h3 { font-family: var(--font-title); font-size: 1.6rem; color: var(--primary); margin-bottom: 15px; }
+        .mvv-card p { font-size: 0.95rem; color: #555; }
+        .mvv-list { list-style: none; padding: 0; margin-top: 15px; }
+        .mvv-list li { font-size: 0.95rem; color: #444; margin: 8px 0; display: flex; justify-content: center; align-items: center; gap: 8px; }
+        .mvv-list li::before { content: '✦'; color: var(--luxury); font-size: 0.8rem; }
 
-        footer {
-            background-color: var(--primary);
-            color: var(--text-light);
-            text-align: center;
-            padding: 50px 20px;
-            border-top: 4px solid var(--accent);
-        }
+        /* VITRINE DE PRODUTOS PREMIUM */
+        .produtos-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; max-width: 1200px; margin: 0 auto; }
+        .product-card { background: var(--white); overflow: hidden; border-radius: 0; box-shadow: 0 10px 35px rgba(0,0,0,0.02); transition: var(--transition); position: relative; }
+        .product-card:hover { transform: translateY(-5px); box-shadow: 0 25px 50px rgba(0,0,0,0.07); }
+        .product-img { width: 100%; height: 380px; overflow: hidden; position: relative; }
+        .product-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+        .product-card:hover .product-img img { transform: scale(1.06); }
+        .product-badge { position: absolute; top: 20px; left: 20px; background: var(--primary); color: var(--white); padding: 6px 15px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 500; }
+        .product-info { padding: 30px; text-align: center; }
+        .product-info h3 { font-family: var(--font-title); font-size: 1.5rem; color: var(--primary); margin-bottom: 8px; }
+        .product-notes { font-size: 0.8rem; text-transform: uppercase; color: var(--luxury); letter-spacing: 1px; margin-bottom: 15px; font-weight: 600; }
+        .product-info p { font-size: 0.9rem; color: #666; margin-bottom: 20px; font-style: italic; }
 
-        @media (max-width: 900px) {
-            .grid-2 { grid-template-columns: 1fr; gap: 40px; }
-            header { flex-direction: column; gap: 15px; }
+        /* SEÇÃO PREMIUM: PERFUME PERSONALIZADO */
+        .custom-perfume { background: #F2F7F4; display: flex; align-items: center; flex-wrap: wrap; gap: 60px; padding: 100px 8%; }
+        .custom-text, .custom-graphic { flex: 1; min-width: 300px; }
+        .custom-text h2 { font-family: var(--font-title); font-size: 2.5rem; color: var(--primary); margin-bottom: 20px; }
+        .custom-text p { font-size: 1rem; color: #444; margin-bottom: 30px; }
+        .features-list { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 40px; }
+        .feature-item h4 { font-size: 1rem; color: var(--primary); margin-bottom: 5px; font-weight: 600; }
+        .feature-item p { font-size: 0.85rem; color: #666; margin-bottom: 0; }
+        .interactive-preview {
+            border: 2px solid var(--luxury); background: var(--white); padding: 40px; text-align: center;
+            border-radius: 40px 40px 10px 10px; max-width: 350px; margin: 0 auto; box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+        }
+        .bottle-neck { width: 50px; height: 20px; background: var(--luxury); margin: -60px auto 40px; border-radius: 4px; }
+        .label-box { border: 1px dashed var(--primary); padding: 25px 15px; margin: 20px 0; }
+        .label-box h3 { font-family: var(--font-title); letter-spacing: 3px; color: var(--primary); }
+        .control-panel { margin-top: 25px; text-align: left; }
+        .control-panel label { font-size: 0.8rem; font-weight: 600; color: #555; }
+        .input-premium { width: 100%; padding: 10px; border: 1px solid #CCC; margin-top: 5px; font-family: var(--font-body); font-size: 0.85rem; }
+
+        /* SUSTENTABILIDADE & CONTADORES */
+        .sustentabilidade { background: var(--primary); color: var(--white); }
+        .sustentabilidade .section-header h2 { color: var(--white); }
+        .sustentabilidade .section-header p { color: var(--accent); }
+        .sust-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 40px; max-width: 1200px; margin: 0 auto; text-align: center; }
+        .sust-item h3 { font-family: var(--font-title); font-size: 3.5rem; color: var(--luxury); margin-bottom: 10px; font-weight: 700; }
+        .sust-item h4 { font-size: 1.1rem; margin-bottom: 10px; font-weight: 500; letter-spacing: 1px; }
+        .sust-item p { font-size: 0.85rem; color: var(--light); }
+
+        /* RECONHECIMENTOS COM CARDS DOURADOS */
+        .awards-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; max-width: 900px; margin: 0 auto; }
+        .award-card {
+            border: 1px solid rgba(201, 162, 39, 0.3); background: linear-gradient(145deg, #ffffff, #fffdf7);
+            padding: 45px; text-align: center; border-radius: 4px; transition: var(--transition);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.01); position: relative;
+        }
+        .award-card::before { content: ''; position: absolute; top: 15px; left: 15px; right: 15px; bottom: 15px; border: 1px solid rgba(201, 162, 39, 0.15); pointer-events: none; }
+        .award-card:hover { transform: translateY(-5px); border-color: var(--luxury); box-shadow: 0 20px 45px rgba(201,162,39,0.1); }
+        .award-crown { font-size: 2.2rem; color: var(--luxury); margin-bottom: 15px; }
+        .award-card h3 { font-family: var(--font-title); font-size: 1.5rem; color: var(--primary); margin-bottom: 10px; }
+        .award-card h4 { font-size: 0.85rem; text-transform: uppercase; color: var(--luxury); letter-spacing: 1px; margin-bottom: 15px; }
+        .award-card p { font-size: 0.9rem; color: #555; }
+
+        /* EXPERIÊNCIA FLOREAL */
+        .exp-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; }
+        .exp-card { background: var(--white); box-shadow: 0 10px 30px rgba(0,0,0,0.02); transition: var(--transition); overflow: hidden; }
+        .exp-card:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
+        .exp-img { height: 220px; overflow: hidden; }
+        .exp-img img { width: 100%; height: 100%; object-fit: cover; }
+        .exp-info { padding: 25px; text-align: center; }
+        .exp-info h3 { font-family: var(--font-title); color: var(--primary); font-size: 1.25rem; margin-bottom: 10px; }
+        .exp-info p { font-size: 0.85rem; color: #666; }
+
+        /* HISTÓRIAS E CONEXÕES (DEPOIMENTOS EMOCIONAIS) */
+        .testimonials { background: #FAF7F0; }
+        .test-wrapper { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; max-width: 1100px; margin: 0 auto; }
+        .test-card { background: var(--white); padding: 40px; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.02); }
+        .test-card::before { content: '“'; font-family: var(--font-title); font-size: 5rem; color: rgba(201, 162, 39, 0.15); position: absolute; top: 10px; left: 20px; line-height: 1; }
+        .test-card p { font-size: 0.95rem; color: #444; font-style: italic; margin-bottom: 25px; position: relative; z-index: 1; }
+        .test-author { display: flex; align-items: center; gap: 15px; }
+        .test-author-img { width: 50px; height: 50px; border-radius: 50%; object-fit: cover; }
+        .test-author-info h4 { font-size: 0.95rem; color: var(--primary); font-weight: 600; }
+        .test-author-info span { font-size: 0.75rem; color: var(--luxury); text-transform: uppercase; }
+
+        /* FORMULÁRIO DE CONTATO ALTA CONFIANÇA */
+        .contato-container { display: grid; grid-template-columns: 1fr 1.5fr; gap: 60px; max-width: 1100px; margin: 0 auto; background: var(--white); box-shadow: 0 20px 50px rgba(0,0,0,0.03); padding: 50px; border-radius: 4px; }
+        .info-panel { background: var(--primary); color: var(--white); padding: 40px; display: flex; flex-direction: column; justify-content: space-between; }
+        .info-panel h3 { font-family: var(--font-title); font-size: 1.8rem; margin-bottom: 20px; color: var(--luxury); }
+        .info-items { margin: 30px 0; }
+        .info-item { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; font-size: 0.9rem; }
+        .info-item-icon { color: var(--luxury); font-size: 1.2rem; }
+        .form-panel form { display: flex; flex-direction: column; gap: 20px; }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .form-group { display: flex; flex-direction: column; }
+        .form-group label { font-size: 0.8rem; font-weight: 500; color: #555; margin-bottom: 5px; text-transform: uppercase; letter-spacing: 1px; }
+        .form-control { padding: 12px 15px; border: 1px solid #E1E1E1; font-family: var(--font-body); font-size: 0.9rem; background: #FAFBF9; transition: var(--transition); }
+        .form-control:focus { border-color: var(--primary); background: var(--white); outline: none; }
+        .error-msg { color: #D90429; font-size: 0.75rem; margin-top: 5px; display: none; }
+        .success-banner { display: none; background: #D8F3DC; color: #1B4332; padding: 15px; font-size: 0.9rem; border-left: 4px solid var(--primary); margin-bottom: 20px; }
+
+        /* FOOTER BRANDING */
+        footer { background: #111A15; color: rgba(255,255,255,0.7); padding: 80px 8% 30px; font-size: 0.9rem; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 50px; max-width: 1200px; margin: 0 auto 50px; }
+        .footer-brand h2 { font-family: var(--font-title); color: var(--white); font-size: 2rem; letter-spacing: 5px; margin-bottom: 20px; }
+        .footer-brand p { max-width: 350px; font-size: 0.85rem; line-height: 1.8; }
+        .footer-box h3 { font-family: var(--font-title); color: var(--white); font-size: 1.1rem; margin-bottom: 20px; letter-spacing: 1px; }
+        .footer-box ul { list-style: none; }
+        .footer-box li { margin-bottom: 12px; }
+        .footer-box a { color: rgba(255,255,255,0.6); text-decoration: none; transition: var(--transition); font-size: 0.85rem; }
+        .footer-box a:hover { color: var(--luxury); padding-left: 5px; }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.05); padding-top: 30px; text-align: center; font-size: 0.8rem; }
+
+        /* BACK TO TOP WIDGET */
+        #backToTop {
+            position: fixed; bottom: 40px; right: 40px; width: 45px; height: 45px;
+            background: var(--primary); color: var(--white); border: 1px solid var(--luxury);
+            display: flex; justify-content: center; align-items: center; cursor: pointer;
+            z-index: 998; opacity: 0; visibility: hidden; transition: var(--transition);
+        }
+        #backToTop.show { opacity: 1; visibility: visible; }
+        #backToTop:hover { background: var(--luxury); color: var(--primary); }
+
+        /* RESPONSIVIDADE EXTREMA MOBILE FIRST MATRICIAL */
+        @media (max-width: 992px) {
+            header { padding: 20px 5%; }
+            .menu-hamburger { display: block; }
+            nav ul {
+                position: fixed; top: 0; right: -100%; width: 280px; height: 100vh;
+                background: var(--primary); flex-direction: column; padding: 100px 40px;
+                gap: 2rem; transition: 0.5s cubic-bezier(0.77,0.2,0.05,1); box-shadow: -10px 0 30px rgba(0,0,0,0.1);
+            }
+            nav.open ul { right: 0; }
+            nav a { color: var(--white) !important; font-size: 1.1rem; }
+            .hero-content h1 { font-size: 2.5rem; }
+            .timeline::after { left: 40px; }
+            .timeline-container { width: 100%; padding-left: 70px; padding-right: 25px; }
+            .timeline-container::after { left: 34px; }
+            .right { left: 0; }
+            .custom-perfume { flex-direction: column; padding: 80px 5%; }
+            .contato-container { grid-template-columns: 1fr; padding: 30px; }
+            .form-row { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; gap: 40px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Container Global para Mensagens Flutuantes (JS) -->
-    <div id="toast-container"></div>
-
-    <!-- Elemento para Chuva de Pétalas Em Tempo Real (JS) -->
-    <div id="petals-container"></div>
-
-    <!-- Painel Fixo de Recursos Técnicos e Acessibilidade -->
-    <div class="widget-fixed" role="toolbar">
-        <button class="widget-btn" onclick="MundoAcessivel.alternarContraste()">🌓 Contraste</button>
-        <button class="widget-btn" onclick="MundoAcessivel.redimensionarFonte(1)">A+</button>
-        <button class="widget-btn" onclick="MundoAcessivel.redimensionarFonte(-1)">A-</button>
-        <button class="widget-btn" onclick="EfeitoPetalas.alternarChuva()" id="btn-petala-status">🌸 Pausar Rosas</button>
+    <div id="loader" aria-hidden="true">
+        <div class="loader-logo">FLOREAL</div>
+        <div class="loader-bar"></div>
     </div>
 
-    <header>
-        <h1>FLOREAL</h1>
-        <nav>
+    <button id="backToTop" aria-label="Voltar para o topo da página">↑</button>
+
+    <header id="mainHeader">
+        <a href="#" class="logo" aria-label="Floreal Home">FLOREAL</a>
+        <button class="menu-hamburger" id="hamburgerBtn" aria-label="Abrir Menu Executivo" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+        <nav id="mainNav">
             <ul>
-                <li><a href="#historia">História</a></li>
-                <li><a href="#produtos">Coleções</a></li>
-                <li><a href="#laboratorio">Laboratório</a></li>
+                <li><a href="#">Início</a></li>
+                <li><a href="#historia">Nossa História</a></li>
+                <li><a href="#valores">Missão e Valores</a></li>
+                <li><a href="#produtos">Produtos</a></li>
+                <li><a href="#personalizado">Assinatura Olfativa</a></li>
                 <li><a href="#sustentabilidade">Sustentabilidade</a></li>
-                <li class="cart-badge">🛒 Sacola: <span id="cart-counter-value">0</span></li>
+                <li><a href="#reconhecimentos">Reconhecimentos</a></li>
+                <li><a href="#experiencia">Atendimento</a></li>
+                <li><a href="#contato">Contato</a></li>
             </ul>
+            <a href="#produtos" class="btn-premium btn-cta-nav">Conheça Nossas Fragrâncias</a>
         </nav>
     </header>
 
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Transformando Emoções em Fragrâncias Inesquecíveis</h1>
+            <p>A arte da perfumaria artesanal brasileira unindo natureza exuberante, inovação molecular e sustentabilidade radical.</p>
+            <div class="hero-buttons">
+                <a href="#produtos" class="btn-premium btn-solid">Explorar Coleções</a>
+                <a href="#historia" class="btn-premium btn-outline">Nossa História</a>
+            </div>
+        </div>
+    </section>
+
     <main>
-
-        <!-- HISTÓRIA (IMAGEM ATUALIZADA) -->
         <section id="historia" class="reveal">
-            <div class="grid-2">
-                <div class="content-text">
-                    <h2 class="section-title" style="text-align: left; margin-bottom: 30px;">A Jornada</h2>
-                    <p>Fundada em 2010 pela perfumista <strong>Clara Almeida</strong>, a Floreal nasceu da necessidade de materializar lembranças preciosas. Inspirando-se no conhecimento botânico de sua família e refinando-o com tecnologia sustentável em Montenegro (RS), a marca expandiu suas fronteiras e hoje exporta luxo consciente para o mundo.</p>
-                </div>
-                <div class="img-wrapper">
-                    <img src="https://loremflickr.com/800/600/perfume,laboratory,glass" alt="Equipamentos do laboratório Floreal">
-                </div>
+            <div class="section-header">
+                <h2>Sobre a Floreal</h2>
+                <p>Nossa Jornada Evolutiva</p>
             </div>
-        </section>
-
-        <!-- VITRINE (IMAGENS ATUALIZADAS) -->
-        <section id="produtos" class="reveal">
-            <h2 class="section-title">Coleções Exclusivas</h2>
-            <div class="produtos-grid">
-                <!-- Perfume 1 -->
-                <div class="card">
-                    <div class="card-img"><img src="https://loremflickr.com/600/600/perfume,bottle" alt="Frasco de Luz do Amanhã"></div>
-                    <div class="card-info">
-                        <h3>Luz do Amanhã</h3>
-                        <p>Toque sutil de Flor de Laranjeira e a nobreza da Baunilha Bourbon.</p>
-                        <button class="btn-action" onclick="SistemaCarrinho.adicionar('Luz do Amanhã')">Adicionar • R$ 249</button>
-                    </div>
-                </div>
-                <!-- Perfume 2 -->
-                <div class="card">
-                    <div class="card-img"><img src="https://loremflickr.com/600/600/fragrance,luxury" alt="Frasco de Brisa do Mar"></div>
-                    <div class="card-info">
-                        <h3>Brisa do Mar</h3>
-                        <p>Frescor revigorante de Notas Cítricas Italianas misturadas ao Jasmim.</p>
-                        <button class="btn-action" onclick="SistemaCarrinho.adicionar('Brisa do Mar')">Adicionar • R$ 249</button>
-                    </div>
-                </div>
-                <!-- Perfume 3 -->
-                <div class="card">
-                    <div class="card-img"><img src="https://loremflickr.com/600/600/cosmetics,flowers" alt="Frasco de Perfume customizado"></div>
-                    <div class="card-info">
-                        <h3>Frasco Autoral</h3>
-                        <p>Participe da nossa experiência e monte sua própria fórmula olfativa.</p>
-                        <button class="btn-action" onclick="window.location.href='#laboratorio'">Criar no Laboratório</button>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- LABORATÓRIO DIGITAL INTERATIVO -->
-        <section id="laboratorio" class="reveal">
-            <h2 class="section-title">Laboratório Interativo</h2>
             
-            <div class="lab-container">
-                <!-- QUIZ -->
-                <div class="interactive-box">
-                    <h3>✨ Inteligência de Aromas</h3>
-                    <p>Selecione sua intenção atual. O system mapeará as propriedades botânicas recomendadas para você:</p>
-                    <div class="quiz-flex">
-                        <button class="custom-btn" onclick="LaboratorioDigital.processarQuiz('calma')">Busco Calma & Foco</button>
-                        <button class="custom-btn" onclick="LaboratorioDigital.processarQuiz('energy')">Quero Energia & Vigor</button>
-                        <button class="custom-btn" onclick="LaboratorioDigital.processarQuiz('luxo')">Preservo Mistério & Luxo</button>
+            <div style="max-width:800px; margin: 0 auto 60px; text-align: center; font-size:1.1rem; color:#444; line-height:1.8;">
+                <p style="text-transform:none; letter-spacing:0; margin-bottom:20px;">A Floreal nasceu em 2010 através da visão de Clara Almeida, uma perfumista apaixonada por transformar emoções e memórias em fragrâncias únicas. Inspirada pelos ensinamentos de sua avó herbalista, Clara combinou ingredientes naturais cuidadosamente selecionados com técnicas modernas de perfumaria.</p>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-container left">
+                    <div class="timeline-content">
+                        <h3>2010</h3>
+                        <h4>Fundação por Clara Almeida</h4>
+                        <p>O início de um sonho guiado pelo desejo de criar uma perfumaria brasileira autêntica e conectada às raízes botânicas.</p>
                     </div>
-                    <div id="quiz-output-panel" class="panel-output"></div>
                 </div>
+                <div class="timeline-container right">
+                    <div class="timeline-content">
+                        <h3>Lavras do Sul</h3>
+                        <h4>Primeira Instalação Industrial</h4>
+                        <p>Fábrica projetada para aproveitar estrategicamente a rica biodiversidade local e a tradição ancestral na extração de óleos essenciais puros.</p>
+                    </div>
+                </div>
+                <div class="timeline-container left">
+                    <div class="timeline-content">
+                        <h3>Crescimento</h3>
+                        <h4>Expansão de Mercado</h4>
+                        <p>O reconhecimento da qualidade da marca provoca uma explosão de demanda por nossas coleções artesanais.</p>
+                    </div>
+                </div>
+                <div class="timeline-container right">
+                    <div class="timeline-content">
+                        <h3>Montenegro</h3>
+                        <h4>Ampliação Estrutural</h4>
+                        <p>Transferência estratégica do complexo fabril para Montenegro (RS), escalando a engenharia produtiva com tecnologias de impacto zero.</p>
+                    </div>
+                </div>
+                <div class="timeline-container left">
+                    <div class="timeline-content">
+                        <h3>Internacionalização</h3>
+                        <h4>Conquista do Mundo</h4>
+                        <p>Abertura de canais logísticos e exportação consolidada para mercados exigentes na América Latina e Europa.</p>
+                    </div>
+                </div>
+                <div class="timeline-container right">
+                    <div class="timeline-content">
+                        <h3>Hoje</h3>
+                        <h4>Excelência Humana</h4>
+                        <p>Mais de 100 colaboradores diretos altamente capacitados através de centros de treinamento contínuo em cosmetologia.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-                <!-- CONSTRUTOR EM TEMPO REAL -->
-                <div class="interactive-box">
-                    <h3>🧪 Construtor de Perfume Sob Medida</h3>
-                    <p>Preencha os dados e manipule as essências para visualizar seu frasco personalizado imediatamente:</p>
-                    
-                    <div class="grid-2" style="margin-top: 25px; gap: 40px;">
-                        <div>
-                            <label style="font-weight:600; font-size:0.9em;">Nome Impresso no Vidro:</label>
-                            <input type="text" id="input-perfume-name" class="form-select" placeholder="Ex: Essence" oninput="LaboratorioDigital.renderizarFrasco()">
-                            
-                            <label style="font-weight:600; font-size:0.9em;">Nota Primária (Topo):</label>
-                            <select id="select-saida" class="form-select" onchange="LaboratorioDigital.renderizarFrasco()">
-                                <option value="Bergamota de Grasse">Bergamota de Grasse</option>
-                                <option value="Lavanda Silvestre">Lavanda Silvestre Francesa</option>
-                                <option value="Menta Doce Nobre">Menta Doce Nobre</option>
-                            </select>
+        <section id="valores" class="reveal" style="background:#FAFBF9;">
+            <div class="section-header">
+                <h2>Diretrizes Estratégicas</h2>
+                <p>O que nos move e orienta</p>
+            </div>
+            <div class="mvv-grid">
+                <div class="mvv-card">
+                    <div class="mvv-icon">🌿</div>
+                    <h3>Missão</h3>
+                    <p>Oferecer experiências sensoriais únicas através de fragrâncias de excelência, promovendo ativamente a sustentabilidade, o respeito à biodiversidade e o bem-estar sistêmico.</p>
+                </div>
+                <div class="mvv-card">
+                    <div class="mvv-icon">👁️</div>
+                    <h3>Visão</h3>
+                    <p>Ser reconhecida globalmente como a principal referência em perfumaria de luxo natural, sustentável e inovadora de origem brasileira.</p>
+                </div>
+                <div class="mvv-card">
+                    <div class="mvv-icon">✧</div>
+                    <h3>Valores</h3>
+                    <ul class="mvv-list">
+                        <li>Inovação Molecular</li>
+                        <li>Sustentabilidade Radical</li>
+                        <li>Qualidade Absoluta</li>
+                        <li>Exclusividade Artesanal</li>
+                        <li>Bem-Estar Consciente</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
 
-                            <label style="font-weight:600; font-size:0.9em;">Nota de Coração (Corpo):</label>
-                            <select id="select-corpo" class="form-select" onchange="LaboratorioDigital.renderizarFrasco()">
-                                <option value="Rosas Vermelhas">Pétalas de Rosas de Grasse</option>
-                                <option value="Jasmim Imperial">Jasmim Real Absoluto</option>
-                                <option value="Alecrim Selvagem">Alecrim Selvagem Nacional</option>
+        <section id="produtos" class="reveal">
+            <div class="section-header">
+                <h2>Nossas Coleções</h2>
+                <p>A Alquimia da Alta Perfumaria</p>
+            </div>
+            <div class="produtos-grid">
+                <div class="product-card">
+                    <span class="product-badge">Linha Clássicos</span>
+                    <div class="product-img">
+                        <img src="https://loremflickr.com/600/700/perfume,luxury,bottle?lock=1" alt="Frasco do perfume Luz do Amanhã">
+                    </div>
+                    <div class="product-info">
+                        <h3>Luz do Amanhã</h3>
+                        <div class="product-notes">Flor de Laranjeira & Baunilha</div>
+                        <p>Uma ode ao renascimento matinal. Desperte seus sentidos com o frescor radiante do amanhecer fundido à doçura acolhedora de notas nobres de baunilha.</p>
+                        <button class="btn-premium btn-solid" style="width:100%; padding:12px;">Comprar Fragrância</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <span class="product-badge">Coleção Primavera</span>
+                    <div class="product-img">
+                        <img src="https://loremflickr.com/600/700/perfume,nature,bottle?lock=2" alt="Frasco do perfume Brisa do Mar">
+                    </div>
+                    <div class="product-info">
+                        <h3>Brisa do Mar</h3>
+                        <div class="product-notes">Cítricos Nobres & Jasmim</div>
+                        <p>O encontro arrebatador da maresia revigorante com a sofisticação floral. Uma fragrância leve, etérea e intensamente refrescante.</p>
+                        <button class="btn-premium btn-solid" style="width:100%; padding:12px;">Comprar Fragrância</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <span class="product-badge">Linha Especial</span>
+                    <div class="product-img">
+                        <img src="https://loremflickr.com/600/700/perfume,artisan,cosmetics?lock=3" alt="Produtos da Linha Especial Floreal">
+                    </div>
+                    <div class="product-info">
+                        <h3>Arte & Essência</h3>
+                        <div class="product-notes">Colaborações Exclusivas</div>
+                        <p>Fragrâncias conceituais desenvolvidas em sinergia com artistas plásticos locais, unindo artes visuais ao design olfativo de vanguarda.</p>
+                        <button class="btn-premium btn-solid" style="width:100%; padding:12px;">Comprar Fragrância</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-header" style="margin-top:100px; margin-bottom:50px;">
+                <h3>Cuidados Complementares</h3>
+            </div>
+            <div class="mvv-grid">
+                <div class="mvv-card" style="padding:25px;">
+                    <div style="font-size:2rem; margin-bottom:10px;">💧</div>
+                    <h4>Óleos Aromáticos</h4>
+                    <p style="font-size:0.85rem;">Concentrados botânicos puros para rituais de bem-estar profunda.</p>
+                </div>
+                <div class="mvv-card" style="padding:25px;">
+                    <div style="font-size:2rem; margin-bottom:10px;">⏳</div>
+                    <h4>Difusores</h4>
+                    <p style="font-size:0.85rem;">Névoa olfativa contínua para transformar a atmosfera de seus espaços.</p>
+                </div>
+                <div class="mvv-card" style="padding:25px;">
+                    <div style="font-size:2rem; margin-bottom:10px;">🧼</div>
+                    <h4>Sabonetes</h4>
+                    <p style="font-size:0.85rem;">Base 100% vegetal com infusão de extratos frescos hidratantes.</p>
+                </div>
+                <div class="mvv-card" style="padding:25px;">
+                    <div style="font-size:2rem; margin-bottom:10px;">🧴</div>
+                    <h4>Cremes</h4>
+                    <p style="font-size:0.85rem;">Nutrição celular avançada perfumada com óleos essenciais.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="personalizado" class="custom-perfume reveal">
+            <div class="custom-text">
+                <span style="color:var(--luxury); font-weight:600; text-transform:uppercase; letter-spacing:2px; font-size:0.85rem;">Inovação Floreal Lab</span>
+                <h2 style="margin-top:10px;">Crie Sua Própria Assinatura Olfativa</h2>
+                <p>Lançado com pioneirismo em 2022, nosso ecossistema de personalização funde tecnologia digital e sensibilidade artística para dar vida ao seu aroma exclusivo.</p>
+                
+                <div class="features-list">
+                    <div class="feature-item">
+                        <h4>Workshops Presenciais</h4>
+                        <p>Imersão em nossos laboratórios guiada por mestres perfumistas.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>Workshops Online</h4>
+                        <p>Receba seu kit alquímico em casa e participe de mentorias ao vivo.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>Escolha de Notas</h4>
+                        <p>Acesso a um acervo de mais de 150 notas moleculares e naturais.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>Personalização de Embalagem</h4>
+                        <p>Frascos lapidados gravados a laser com seu nome ou marca.</p>
+                    </div>
+                </div>
+                <a href="#contato" class="btn-premium btn-solid">Agendar Experiência</a>
+            </div>
+
+            <div class="custom-graphic">
+                <div class="interactive-preview">
+                    <div class="bottle-neck"></div>
+                    <h3 style="font-family:var(--font-title); font-size:1.2rem; color:var(--luxury);">FLOREAL LAB</h3>
+                    <div class="label-box">
+                        <h3 id="previewName">Seu Aroma</h3>
+                        <p id="previewNotes" style="font-size:0.75rem; color:#666; font-family:var(--font-body); margin-top:5px; text-transform:uppercase;">Selecione seus Acordes</p>
+                    </div>
+                    <p style="font-size:0.65rem; color:#999; letter-spacing:1px;">EAU DE PARFUM • 100ML</p>
+
+                    <div class="control-panel">
+                        <div class="form-group" style="margin-bottom:12px;">
+                            <label for="perfumeNameInput">Nome no Rótulo</label>
+                            <input type="text" id="perfumeNameInput" class="input-premium" placeholder="Ex: Essência Real">
+                        </div>
+                        <div class="form-group">
+                            <label for="perfumeNoteSelect">Nota Predominante</label>
+                            <select id="perfumeNoteSelect" class="input-premium">
+                                <option value="Flor de Laranjeira Absoluto">Flor de Laranjeira Absoluto</option>
+                                <option value="Jasmin Imperial da Malásia">Jasmin Imperial da Malásia</option>
+                                <option value="Madeiras Preciosas do Cerrado">Madeiras Preciosas do Cerrado</option>
+                                <option value="Baunilha Intensa Bourbon">Baunilha Intensa Bourbon</option>
                             </select>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-                        <!-- Preview Dinâmico Gerado por CSS/JS -->
-                        <div>
-                            <div class="bottle-render">
-                                <div class="bottle-cap"></div>
-                                <h4 style="color:var(--primary); font-size:1.1em;">FLOREAL</h4>
-                                <p style="font-size:0.6em; letter-spacing:3px; color:#999; text-transform:uppercase;">Custom Collection</p>
-                                
-                                <div class="bottle-label">
-                                    <h3 id="lbl-preview-name" style="font-size:1.1em; color:var(--text-dark);">Seu Aroma</h3>
-                                    <p id="lbl-preview-desc" style="font-size:0.75em; color:#666; font-family:'Inter'; margin-top:5px;">Selecione os acordes</p>
-                                </div>
-                                <p style="font-size:0.65em; color:#777;">Parfum d'Exception • 100ml</p>
+        <section id="sustentabilidade" class="sustentabilidade reveal">
+            <div class="section-header">
+                <h2>Sustentabilidade Viva</h2>
+                <p>Nosso Compromisso Sistêmico com o Futuro</p>
+            </div>
+            
+            <div style="max-width:800px; margin:0 auto 70px; text-align:center;">
+                <p style="color:var(--light); font-size:1.05rem; font-weight:300;">Operamos sob pilares éticos inflexíveis. Desde o mapeamento botânico de ingredientes orgânicos cultivados por fornecedores certificados até processos fabris de desperdício zero e embalagens totalmente circulares.</p>
+            </div>
+
+            <div class="sust-grid">
+                <div class="sust-item">
+                    <h3 class="counter" data-target="95">0</h3>
+                    <h4>% Ingredientes Naturais</h4>
+                    <p>Fórmulas limpas, livres de parabenos e petroquímicos.</p>
+                </div>
+                <div class="sust-item">
+                    <h3 class="counter" data-target="100">0</h3>
+                    <h4>% Embalagens Recicláveis</h4>
+                    <p>Logística reversa ativa e ciclo total de reaproveitamento.</p>
+                </div>
+                <div class="sust-item">
+                    <h3 class="counter" data-target="15">0</h3>
+                    <h4>+ Anos de Compromisso</h4>
+                    <p>Mais de uma década moldando o luxo sustentável nacional.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="reconhecimentos" class="reveal">
+            <div class="section-header">
+                <h2>Reconhecimentos Nacionais</h2>
+                <p>Chancelas de Excelência e Prestígio</p>
+            </div>
+            <div class="awards-grid">
+                <div class="award-card">
+                    <div class="award-crown">👑</div>
+                    <h3>Prêmio Atualidade Cosmética</h3>
+                    <h4>O Oscar da Perfumaria</h4>
+                    <p>Consagrada pelo júri técnico internacional pela harmonia molecular, inovação olfativa brasileira e fixação de alto desempenho ecológico.</p>
+                </div>
+                <div class="award-card">
+                    <div class="award-crown">✨</div>
+                    <h3>Prêmio ABIHPEC Beleza Brasil</h3>
+                    <h4>Excelência Industrial</h4>
+                    <p>Reconhecimento máximo concedido à Floreal pelo pioneirismo em práticas sustentáveis industriais e desenvolvimento tecnológico consciente.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="experiencia" class="reveal" style="background:#FAFBF9;">
+            <div class="section-header">
+                <h2>Experiência Omnichannel</h2>
+                <p>Onde Encontrar Nossos Universos</p>
+            </div>
+            <div class="exp-grid">
+                <div class="exp-card">
+                    <div class="exp-img"><img src="https://loremflickr.com/500/400/store,luxury?lock=10" alt="Interior de nossa Loja Conceito"></div>
+                    <div class="exp-info">
+                        <h3>Loja Física</h3>
+                        <p>Espaços imersivos de calmaria com visitas guiadas exclusivas e testes botânicos vivos.</p>
+                    </div>
+                </div>
+                <div class="exp-card">
+                    <div class="exp-img"><img src="https://loremflickr.com/500/400/ecommerce,luxury?lock=11" alt="Dispositivo navegando no e-commerce"></div>
+                    <div class="exp-info">
+                        <h3>E-commerce</h3>
+                        <p>Loja online de alta performance com inteligência artificial para diagnósticos olfativos remotos.</p>
+                    </div>
+                </div>
+                <div class="exp-card">
+                    <div class="exp-img"><img src="https://loremflickr.com/500/400/boutique,fashion?lock=12" alt="Boutique premium credenciada"></div>
+                    <div class="exp-info">
+                        <h3>Boutiques Parceiras</h3>
+                        <p>Distribuição altamente seleta em pontos de luxo e resorts espalhados por todo o território nacional.</p>
+                    </div>
+                </div>
+                <div class="exp-card">
+                    <div class="exp-img"><img src="https://loremflickr.com/500/400/expo,event?lock=13" alt="Estande em feira internacional"></div>
+                    <div class="exp-info">
+                        <h3>Eventos e Feiras</h3>
+                        <p>Participações marcantes nas principais exibições globais de design de cosméticos sustentáveis.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="testimonials reveal">
+            <div class="section-header">
+                <h2>Histórias e Conexões</h2>
+                <p>Fragrâncias com Alma Narrativa</p>
+            </div>
+            <div style="max-width:800px; margin:0 auto 60px; text-align:center;">
+                <p style="color:#555; font-size:1.05rem;">Cada obra da Floreal acompanha um manifesto impresso em papel semente reciclado, detalhando a história literária, as origens agrícolas das famílias parceiras e as memórias que inspiraram a fragrância.</p>
+            </div>
+
+            <div class="test-wrapper">
+                <div class="test-card">
+                    <p>"O perfume Luz do Amanhã me reconectou com as manhãs na fazenda da minha infância. É inacreditável como uma fragrância consegue traduzir uma textura de memória de forma tão nítida e sofisticada."</p>
+                    <div class="test-author">
+                        <img src="https://loremflickr.com/100/100/woman,portrait?lock=20" alt="Retrato de Helena Albuquerque" class="test-author-img">
+                        <div class="test-author-info">
+                            <h4>Helena Albuquerque</h4>
+                            <span>Arquiteta e Colecionadora</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="test-card">
+                    <p>"A proposta do perfume personalizado online superou todas as minhas expectativas. O processo de escolha é terapêutico e o produto final carrega uma aura de exclusividade incomparável."</p>
+                    <div class="test-author">
+                        <img src="https://loremflickr.com/100/100/man,portrait?lock=21" alt="Retrato de Gabriel Mendonça" class="test-author-img">
+                        <div class="test-author-info">
+                            <h4>Gabriel Mendonça</h4>
+                            <span>Designer de Interiores</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contato" class="reveal">
+            <div class="section-header">
+                <h2>Canal de Atendimento</h2>
+                <p>Conecte-se Conosco</p>
+            </div>
+
+            <div class="contato-container">
+                <div class="info-panel">
+                    <div>
+                        <h3>FLOREAL HQ</h3>
+                        <p>Pronto para mergulhar no design olfativo definitivo ou sanar qualquer dúvida institucional.</p>
+                    </div>
+                    <div class="info-items">
+                        <div class="info-item">
+                            <span class="info-item-icon">📍</span>
+                            <span>Av. das Nações Botânicas, 1010 - Montenegro, RS</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-item-icon">📞</span>
+                            <span>0800 777 4000 • (51) 3649-1000</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-item-icon">✉️</span>
+                            <span>concierge@florealperfumes.com.br</span>
+                        </div>
+                    </div>
+                    <div style="font-size:0.75rem; color:var(--light);">Atendimento Executivo: Segunda a Sexta, das 9h às 18h.</div>
+                </div>
+
+                <div class="form-panel">
+                    <div class="success-banner" id="successBanner" role="alert">
+                        ✨ Sua mensagem foi transmitida com sucesso ao nosso Concierge! Retornaremos seu contato em breve.
+                    </div>
+                    <form id="florealContactForm" novalidate>
+                        <div class="form-group">
+                            <label for="txtName">Nome Completo</label>
+                            <input type="text" id="txtName" class="form-control" placeholder="Seu nome elegante">
+                            <div class="error-msg" id="errName">Por favor, insira seu nome completo.</div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="txtEmail">E-mail Corporativo/Pessoal</label>
+                                <input type="email" id="txtEmail" class="form-control" placeholder="exemplo@dominio.com">
+                                <div class="error-msg" id="errEmail">Por favor, digite um e-mail válido.</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="txtSubject">Assunto</label>
+                                <input type="text" id="txtSubject" class="form-control" placeholder="Ex: Parcerias, Dúvidas...">
+                                <div class="error-msg" id="errSubject">Por favor, informe o assunto da mensagem.</div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- SUSTENTABILIDADE (IMAGEM ATUALIZADA) -->
-        <section id="sustentabilidade" class="reveal">
-            <div class="grid-2">
-                <div class="img-wrapper">
-                    <img src="https://loremflickr.com/800/600/nature,leaves,garden" alt="Folhas verdes simbolizando eco-responsabilidade">
-                </div>
-                <div class="content-text">
-                    <h2 class="section-title" style="text-align: left; margin-bottom: 30px;">Responsabilidade Arte</h2>
-                    <p>Produzimos em sinergia com o meio ambiente. Usamos insumos orgânicos puros e vidros reciclados de alto padrão. Essa dedicação nos premiou com o troféu **Atualidade Cosmética** e o certificado de inovação **ABIHPEC-Beleza Brasil**.</p>
+                        <div class="form-group">
+                            <label for="txtMessage">Mensagem</label>
+                            <textarea id="txtMessage" rows="5" class="form-control" placeholder="Escreva suas intenções ou considerações..."></textarea>
+                            <div class="error-msg" id="errMessage">O campo de mensagem não pode ser enviado vazio.</div>
+                        </div>
+                        <button type="submit" class="btn-premium btn-solid" style="align-self: flex-start;">Transmitir Mensagem</button>
+                    </form>
                 </div>
             </div>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2026 Floreal Haute Parfumerie. Tecnologia e Engenharia Cosmética.</p>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <h2>FLOREAL</h2>
+                <p>Nossa filosofia funde o luxo silencioso, o respeito incondicional pelas florestas e a alta ciência cosmética para engarrafar sensações eternas.</p>
+            </div>
+            <div class="footer-box">
+                <h3>Links Rápidos</h3>
+                <ul>
+                    <li><a href="#historia">Nossa História</a></li>
+                    <li><a href="#valores">Missão & Valores</a></li>
+                    <li><a href="#produtos">Coleções de Aromas</a></li>
+                    <li><a href="#personalizado">Assinatura Customizada</a></li>
+                </ul>
+            </div>
+            <div class="footer-box">
+                <h3>Canais Digitais</h3>
+                <ul>
+                    <li><a href="#" onclick="return false;">Instagram @FlorealHaute</a></li>
+                    <li><a href="#" onclick="return false;">LinkedIn /FlorealCosmetics</a></li>
+                    <li><a href="#" onclick="return false;">Pinterest /FlorealStudio</a></li>
+                    <li><a href="#" onclick="return false;">YouTube /FlorealLab</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Floreal Haute Parfumerie. Todos os direitos reservados. Projeto Arquitetado para Performance de Luxo.</p>
+        </div>
     </footer>
 
-    <!-- ==========================================
-       JAVASCRIPT: ARQUITETURA MODULAR DO SITE
-       ========================================== -->
     <script>
-        // MODULE 1: ANIMAÇÃO DA CHUVA DE PÉTALAS
-        const EfeitoPetalas = (() => {
-            const container = document.getElementById('petals-container');
-            let ativo = true;
+        /* INJEÇÃO AUTOMÁTICA DO ARQUIVO: js/script.js */
+        document.addEventListener('DOMContentLoaded', () => {
 
-            function criarPetala() {
-                if (!ativo) return;
-                const petala = document.createElement('div');
-                petala.classList.add('petal');
-                
-                const dimensao = Math.random() * 14 + 10;
-                petala.style.width = `${dimensao}px`;
-                petala.style.height = `${dimensao}px`;
-                petala.style.left = `${Math.random() * 100}vw`;
-                
-                const tempoAnimacao = Math.random() * 5 + 4; 
-                petala.style.animationDuration = `${tempoAnimacao}s`;
-                
-                if(Math.random() > 0.88) {
-                    petala.style.background = "linear-gradient(135deg, #d4af37, #f3e5ab)";
-                }
-
-                container.appendChild(petala);
-                setTimeout(() => petala.remove(), tempoAnimacao * 1000);
-            }
-
-            return {
-                inicializar: () => setInterval(criarPetala, 280),
-                alternarChuva: () => {
-                    ativo = !ativo;
-                    const btn = document.getElementById('btn-petal-status');
-                    if(ativo) {
-                        btn.innerText = "🌸 Pausar Rosas";
-                    } else {
-                        btn.innerText = "🌸 Ativar Rosas";
-                        container.innerHTML = "";
-                    }
-                }
-            };
-        })();
-
-        // MODULE 2: SISTEMA DE CARRINHO E TOASTS
-        const SistemaCarrinho = (() => {
-            let totalItens = 0;
-            const containerToast = document.getElementById('toast-container');
-            const elementoContador = document.getElementById('cart-counter-value');
-
-            function exibirToast(nomeProduto) {
-                const toast = document.createElement('div');
-                toast.classList.add('toast');
-                toast.innerText = `✨ ${nomeProduto} adicionado à sacola!`;
-                
-                containerToast.appendChild(toast);
-                setTimeout(() => toast.classList.add('show'), 50);
-
+            // MODULE 1: REMOÇÃO DE LOADING ANIMATION SCREEN
+            const loader = document.getElementById('loader');
+            if (loader) {
                 setTimeout(() => {
-                    toast.classList.remove('show');
-                    setTimeout(() => toast.remove(), 400);
-                }, 3500);
+                    loader.style.opacity = '0';
+                    loader.style.visibility = 'hidden';
+                }, 800);
             }
 
-            return {
-                adicionar: (nomeProduto) => {
-                    totalItens++;
-                    elementoContador.innerText = totalItens;
-                    exibirToast(nomeProduto);
-                }
-            };
-        })();
+            // MODULE 2: HEADER DINÂMICO AO ROLAR & VOLTAR AO TOPO
+            const header = document.getElementById('mainHeader');
+            const backToTop = document.getElementById('backToTop');
 
-        // MODULE 3: LÓGICA DO LABORATÓRIO DIGITAL
-        const LaboratorioDigital = (() => {
-            return {
-                processarQuiz: (opcao) => {
-                    const painel = document.getElementById('quiz-output-panel');
-                    painel.style.display = "block";
-                    
-                    const respostas = {
-                        calma: "<strong>Recomendação Alquímica:</strong> Alinhamos sua busca à <strong>Lavanda Silvestre</strong> e notas de fundo macias. Experimente o clássico <em>Luz do Amanhã</em> para equilibrar seu bem-estar.",
-                        energy: "<strong>Recomendação Alquímica:</strong> Seu momento pede <strong>Bergamota Cítrica</strong> e acordes oceânicos vibrantes. O perfume <em>Brisa do Mar</em> é ideal para injetar foco e vigor no seu dia.",
-                        luxo: "<strong>Recomendação Alquímica:</strong> Sofisticação pura. Indicamos nossa <strong>Oficina Customizada</strong> para trabalhar com o absoluto de <em>Rosas de Grasse</em> e construir sua assinatura exclusiva."
-                    };
-                    painel.innerHTML = respostas[opcao] || "";
-                },
-                renderizarFrasco: () => {
-                    const txtNome = document.getElementById('input-perfume-name').value;
-                    const valSaida = document.getElementById('select-saida').value;
-                    const valCorpo = document.getElementById('select-corpo').value;
-                    
-                    document.getElementById('lbl-preview-name').innerText = txtNome ? txtNome : "Seu Aroma";
-                    document.getElementById('lbl-preview-desc').innerText = `Saída de ${valSaida} e corpo de ${valCorpo}.`;
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
                 }
-            };
-        })();
 
-        // MODULE 4: ACESSIBILIDADE GLOBAL
-        const MundoAcessivel = (() => {
-            let baseTamanho = 16;
-            return {
-                alternarContraste: () => document.body.classList.toggle('alto-contraste'),
-                redimensionarFonte: (fator) => {
-                    baseTamanho += (fator * 2);
-                    if(baseTamanho < 12) baseTamanho = 12;
-                    if(baseTamanho > 26) baseTamanho = 26;
-                    document.documentElement.style.setProperty('--font-base', baseTamanho + 'px');
+                if (window.scrollY > 600) {
+                    backToTop.classList.add('show');
+                } else {
+                    backToTop.classList.remove('show');
                 }
-            };
-        })();
+            });
 
-        // MODULE 5: DISPARADOR DO REVEAL ON SCROLL
-        const DisparadorScroll = (() => {
-            const secoes = document.querySelectorAll('.reveal');
-            
-            function checarScroll() {
-                const corteDisparo = (window.innerHeight / 5) * 4;
-                secoes.forEach(secao => {
-                    const topoSecao = secao.getBoundingClientRect().top;
-                    if(topoSecao < corteDisparo) {
-                        secao.classList.add('active');
-                    }
+            if (backToTop) {
+                backToTop.addEventListener('click', () => {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
                 });
             }
 
-            return {
-                escutar: () => {
-                    window.addEventListener('scroll', checarScroll);
-                    checarScroll();
-                }
-            };
-        })();
+            // MODULE 3: NAV MOBILE HAMBURGER LOGIC
+            const hamburgerBtn = document.getElementById('hamburgerBtn');
+            const mainNav = document.getElementById('mainNav');
 
-        // INICIALIZAÇÃO
-        document.addEventListener('DOMContentLoaded', () => {
-            EfeitoPetalas.inicializar();
-            DisparadorScroll.escutar();
-            LaboratorioDigital.renderizarFrasco();
+            if (hamburgerBtn && mainNav) {
+                hamburgerBtn.addEventListener('click', () => {
+                    const isOpen = mainNav.classList.toggle('open');
+                    hamburgerBtn.setAttribute('aria-expanded', isOpen);
+                });
+
+                // Fecha ao clicar em links no mobile
+                mainNav.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        mainNav.classList.remove('open');
+                        hamburgerBtn.setAttribute('aria-expanded', 'false');
+                    });
+                });
+            }
+
+            // MODULE 4: SCROLL REVEAL ANIMATIONS ENGINE
+            const revealElements = document.querySelectorAll('.reveal');
+            const checkReveal = () => {
+                const triggerBottom = (window.innerHeight / 5) * 4.5;
+                revealElements.forEach(el => {
+                    const elTop = el.getBoundingClientRect().top;
+                    if (elTop < triggerBottom) {
+                        el.classList.add('active');
+                    }
+                });
+            };
+            window.addEventListener('scroll', checkReveal);
+            checkReveal(); // Executa inicialização no viewport atual
+
+            // MODULE 5: LABORATÓRIO DIGITAL - SIMULADOR INTERATIVO
+            const inputName = document.getElementById('perfumeNameInput');
+            const selectNote = document.getElementById('perfumeNoteSelect');
+            const previewName = document.getElementById('previewName');
+            const previewNotes = document.getElementById('previewNotes');
+
+            if (inputName && selectNote && previewName && previewNotes) {
+                const updatePreview = () => {
+                    previewName.innerText = inputName.value.trim() !== '' ? inputName.value : 'Seu Aroma';
+                    previewNotes.innerText = selectNote.value;
+                };
+                inputName.addEventListener('input', updatePreview);
+                selectNote.addEventListener('change', updatePreview);
+            }
+
+            // MODULE 6: CONTADORES ANIMADOS COM INTERSECTION OBSERVER
+            const counters = document.querySelectorAll('.counter');
+            const animateCounters = () => {
+                counters.forEach(counter => {
+                    const target = +counter.getAttribute('data-target');
+                    const updateCount = () => {
+                        const current = +counter.innerText;
+                        const increment = target / 40; // Ajuste de velocidade da animação
+                        if (current < target) {
+                            counter.innerText = Math.ceil(current + increment);
+                            setTimeout(updateCount, 25);
+                        } else {
+                            counter.innerText = target;
+                        }
+                    };
+                    updateCount();
+                });
+            };
+
+            const countSection = document.getElementById('sustentabilidade');
+            if (countSection && 'IntersectionObserver' in window) {
+                const observer = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            animateCounters();
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.3 });
+                observer.observe(countSection);
+            } else if (counters.length > 0) {
+                animateCounters(); // Fallback imediato caso navegador antigo
+            }
+
+            // MODULE 7: VALIDAÇÃO INDUSTRIAL DO FORMULÁRIO DE CONTATO
+            const form = document.getElementById('florealContactForm');
+            if (form) {
+                form.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    let isFormValid = true;
+
+                    const name = document.getElementById('txtName');
+                    const email = document.getElementById('txtEmail');
+                    const subject = document.getElementById('txtSubject');
+                    const message = document.getElementById('txtMessage');
+
+                    // RegEx para validação estrita de padrão de e-mail
+                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+                    if (name.value.trim() === '') {
+                        document.getElementById('errName').style.display = 'block';
+                        isFormValid = false;
+                    } else {
+                        document.getElementById('errName').style.display = 'none';
+                    }
+
+                    if (!emailRegex.test(email.value.trim())) {
+                        document.getElementById('errEmail').style.display = 'block';
+                        isFormValid = false;
+                    } else {
+                        document.getElementById('errEmail').style.display = 'none';
+                    }
+
+                    if (subject.value.trim() === '') {
+                        document.getElementById('errSubject').style.display = 'block';
+                        isFormValid = false;
+                    } else {
+                        document.getElementById('errSubject').style.display = 'none';
+                    }
+
+                    if (message.value.trim() === '') {
+                        document.getElementById('errMessage').style.display = 'block';
+                        isFormValid = false;
+                    } else {
+                        document.getElementById('errMessage').style.display = 'none';
+                    }
+
+                    if (isFormValid) {
+                        document.getElementById('successBanner').style.display = 'block';
+                        form.reset();
+                        if (previewName && previewNotes) {
+                            previewName.innerText = 'Seu Aroma';
+                            previewNotes.innerText = 'SELECIONE SEUS ACORDES';
+                        }
+                        window.scrollTo({
+                            top: document.getElementById('contato').offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            }
         });
     </script>
 </body>
