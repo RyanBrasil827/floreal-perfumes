@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Floreal | Laboratório de Emoções</title>
+    <style>
+        /* Estilos Globais */
+        :root {
+            --primary-color: #2E4029;
+            --secondary-color: #D9C5B2;
+            --text-color: #333;
+            --bg-color: #F9F9F6;
+        }
+        body {
+            font-family: 'Georgia', serif;
+            margin: 0;
+            padding: 0;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            line-height: 1.6;
+        }
+        h1, h2, h3 {
+            color: var(--primary-color);
+        }
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+        }
+        
+        /* Cabeçalho e Navegação */
+        header {
+            background-color: #fff;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2em;
+            letter-spacing: 2px;
+        }
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 20px;
+        }
+        nav a {
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 0.9em;
+        }
+
+        /* Hero Section (Imagem Principal) */
+        .hero {
+            background-image: linear-gradient(rgba(46, 64, 41, 0.7), rgba(46, 64, 41, 0.7)), url('https://images.unsplash.com/photo-1595425970377-c9703d74081a?auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            text-align: center;
+            padding: 0 20px;
+        }
+        .hero h2 {
+            color: #fff;
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+        .hero p {
+            font-size: 1.2em;
+            max-width: 600px;
+        }
+
+        /* Seções de Conteúdo */
+        section {
+            padding: 60px 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+        .img-fluid {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        /* Cards de Produtos */
+        .produtos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        .card {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+        
+        /* Rodapé */
+        footer {
+            background-color: var(--primary-color);
+            color: #fff;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>FLOREAL</h1>
+        <nav>
+            <ul>
+                <li><a href="#historia">História</a></li>
+                <li><a href="#produtos">Produtos</a></li>
+                <li><a href="#atendimento">Onde Encontrar</a></li>
+                <li><a href="#sustentabilidade">Sustentabilidade</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="hero">
+        <h2>A Arte da Perfumaria Artesanal</h2>
+        <p>Capturando emoções e memórias em fragrâncias naturais e sustentáveis desde 2010.</p>
+    </div>
+
+    <section id="historia">
+        <div class="grid-2">
+            <div>
+                <h2>Nossa Origem</h2>
+                <p>A <strong>Floreal</strong> foi fundada em 2010 por <strong>Clara Almeida</strong>, uma perfumista apaixonada que sonhava em capturar emoções e memórias em fragrâncias. Inspirada pela sabedoria de sua avó, uma talentosa herbalista, Clara combina ingredientes naturais com técnicas modernas de perfumaria.</p>
+                <p>Nossa jornada começou em Lavras do Sul (RS) e, com o crescimento da nossa família — hoje com cerca de 100 funcionários dedicados —, transferimos nossa produção para Montenegro, ampliando nossa capacidade e exportando para a América Latina e Europa.</p>
+            </div>
+            <div>
+                <img src="https://images.unsplash.com/photo-1608528577891-eb055944f2e7?auto=format&fit=crop&w=800&q=80" alt="Ingredientes Naturais" class="img-fluid">
+            </div>
+        </div>
+    </section>
+
+    <section id="produtos" style="background-color: var(--secondary-color); max-width: 100%; padding-left: 10%; padding-right: 10%;">
+        <div style="max-width: 1000px; margin: 0 auto;">
+            <h2>Nossas Criações</h2>
+            <p>Focamos na criação de perfumes artesanais que evocam lembranças. Cada perfume vem acompanhado de um pequeno cartão que conta a história por trás da fragrância.</p>
+            
+            <div class="produtos-grid">
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1588405748880-12d1d2a59f75?auto=format&fit=crop&w=800&q=80" alt="Linha Clássicos">
+                    <h3>Linha Clássicos</h3>
+                    <p>Fragrâncias nostálgicas como <em>"Luz do Amanhã"</em> (flor de laranjeira e baunilha).</p>
+                </div>
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=800&q=80" alt="Coleção Primavera">
+                    <h3>Coleção Primavera</h3>
+                    <p>Perfumes sazonais como <em>"Brisa do Mar"</em>, com notas refrescantes de cítricos e jasmim.</p>
+                </div>
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1616949755610-8c9bbc08f138?auto=format&fit=crop&w=800&q=80" alt="Personalizados">
+                    <h3>Perfume Personalizado</h3>
+                    <p>Lançada em 2022, permite que você crie sua própria fragrância em workshops exclusivos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="atendimento">
+        <h2>Rede de Atendimento</h2>
+        <ul>
+            <li><strong>Loja Física:</strong> Um espaço acolhedor em nossa cidade natal com visitas guiadas.</li>
+            <li><strong>E-commerce:</strong> Site robusto e interativo para pedidos online e personalizações.</li>
+            <li><strong>Pontos de Venda:</strong> Parcerias com lojas de produtos naturais e boutiques éticas.</li>
+            <li><strong>Eventos e Feiras:</strong> Presença constante em feiras de artesanato e beleza.</li>
+        </ul>
+    </section>
+
+    <section id="sustentabilidade">
+        <div class="grid-2">
+            <div>
+                <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=800&q=80" alt="Sustentabilidade" class="img-fluid">
+            </div>
+            <div>
+                <h2>Compromisso e Reconhecimento</h2>
+                <p>Todos os nossos ingredientes são provenientes de fornecedores éticos e ecológicos, e utilizamos embalagens feitas com materiais recicláveis.</p>
+                <p><strong>Prêmios Conquistados:</strong></p>
+                <ul>
+                    <li><strong>Prêmio Atualidade Cosmética:</strong> O Oscar da Perfumaria.</li>
+                    <li><strong>Prêmio ABIHPEC-Beleza Brasil:</strong> Valorizando a inovação e talento da indústria brasileira.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Fábrica de Perfumes Floreal. Todos os direitos reservados.</p>
+        <p>Criando um futuro sustentável através dos aromas.</p>
+    </footer>
+
+</body>
+</html>
