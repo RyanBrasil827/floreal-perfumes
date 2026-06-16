@@ -1,73 +1,89 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // 1. Loading Screen
+    // 1. Loading Screen (Com verificação de segurança)
     const loader = document.getElementById('loader');
-    window.addEventListener('load', () => {
-        loader.style.opacity = '0';
-        setTimeout(() => {
-            loader.style.display = 'none';
-        }, 500);
-    });
+    if (loader) {
+        window.addEventListener('load', () => {
+            loader.style.opacity = '0';
+            setTimeout(() => {
+                loader.style.display = 'none';
+            }, 500);
+        });
+    }
 
-    // 2. Menu Mobile Toggle
+    // 2. Menu Mobile Toggle (Com verificação de segurança)
     const menuToggle = document.querySelector('.menu-toggle');
     const navMenu = document.getElementById('nav-menu');
 
-    menuToggle.addEventListener('click', () => {
-        navMenu.classList.toggle('active');
-        const icon = menuToggle.querySelector('i');
-        if(navMenu.classList.contains('active')) {
-            icon.classList.remove('fa-bars');
-            icon.classList.add('fa-times');
-        } else {
-            icon.classList.remove('fa-times');
-            icon.classList.add('fa-bars');
-        }
-    });
-
-    // Fechar menu ao clicar num link
-    document.querySelectorAll('.nav-links a').forEach(link => {
-        link.addEventListener('click', () => {
-            navMenu.classList.remove('active');
-            menuToggle.querySelector('i').classList.replace('fa-times', 'fa-bars');
+    if (menuToggle && navMenu) {
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            const icon = menuToggle.querySelector('i');
+            if (icon) {
+                if(navMenu.classList.contains('active')) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                } else {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            }
         });
-    });
 
-    // 3. Header Dinâmico e Botão Voltar ao Topo
+        // Fechar menu ao clicar num link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                const icon = menuToggle.querySelector('i');
+                if (icon) {
+                    icon.classList.replace('fa-times', 'fa-bars');
+                }
+            });
+        });
+    }
+
+    // 3. Header Dinâmico e Botão Voltar ao Topo (Com verificação de segurança)
     const header = document.getElementById('header');
     const backToTop = document.getElementById('backToTop');
 
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
-        }
+    if (header || backToTop) {
+        window.addEventListener('scroll', () => {
+            if (header) {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            }
 
-        if (window.scrollY > 300) {
-            backToTop.classList.add('active');
-        } else {
-            backToTop.classList.remove('active');
-        }
-    });
+            if (backToTop) {
+                if (window.scrollY > 300) {
+                    backToTop.classList.add('active');
+                } else {
+                    backToTop.classList.remove('active');
+                }
+            }
+        });
+    }
 
     // 4. Scroll Reveal Animations (Intersection Observer)
     const revealElements = document.querySelectorAll('.reveal');
-    
-    const revealObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('active');
-                observer.unobserve(entry.target); // Anima apenas uma vez
-            }
+    if (revealElements.length > 0) {
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            root: null,
+            threshold: 0.15,
+            rootMargin: "0px 0px -50px 0px"
         });
-    }, {
-        root: null,
-        threshold: 0.15,
-        rootMargin: "0px 0px -50px 0px"
-    });
 
-    revealElements.forEach(el => revealObserver.observe(el));
+        revealElements.forEach(el => revealObserver.observe(el));
+    }
 
     // 5. Contadores Animados
     const counters = document.querySelectorAll('.counter');
@@ -76,8 +92,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const animateCounters = () => {
         counters.forEach(counter => {
             const target = +counter.getAttribute('data-target');
-            const duration = 2000; // 2 segundos
-            const increment = target / (duration / 16); // 60fps aprox
+            const duration = 2000; 
+            const increment = target / (duration / 16); 
 
             let current = 0;
             const updateCounter = () => {
@@ -94,7 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const counterSection = document.querySelector('.counters-wrapper');
-    if (counterSection) {
+    if (counterSection && counters.length > 0) {
         const counterObserver = new IntersectionObserver((entries) => {
             if (entries[0].isIntersecting && !hasAnimated) {
                 animateCounters();
@@ -109,24 +125,27 @@ document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('contactForm');
     const formStatus = document.getElementById('formStatus');
 
-    if(form) {
+    if (form) {
         form.addEventListener('submit', (e) => {
             e.preventDefault();
             
-            // Simulação de envio
             const btn = form.querySelector('button');
+            if (!btn) return;
+
             const originalText = btn.innerText;
             btn.innerText = 'Enviando...';
             btn.disabled = true;
 
             setTimeout(() => {
-                formStatus.innerHTML = '<span style="color: var(--secondary); font-weight: 600;"><i class="fas fa-check-circle"></i> Mensagem enviada com sucesso! Entraremos em contato em breve.</span>';
+                if (formStatus) {
+                    formStatus.innerHTML = '<span style="color: var(--secondary); font-weight: 600;"><i class="fas fa-check-circle"></i> Mensagem enviada com sucesso!</span>';
+                }
                 form.reset();
                 btn.innerText = originalText;
                 btn.disabled = false;
                 
                 setTimeout(() => {
-                    formStatus.innerHTML = '';
+                    if (formStatus) formStatus.innerHTML = '';
                 }, 5000);
             }, 1500);
         });
