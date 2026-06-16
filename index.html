@@ -8,7 +8,7 @@
     <!-- Fontes Premium -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2 family=Cinzel:wght@400;600;700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     
     <style>
         /* ==========================================
@@ -90,7 +90,7 @@
         }
 
         @keyframes fall {
-            0% { transform: translateY(-20px) rotate(0deg); opacity: 0; }
+            0 { transform: translateY(-20px) rotate(0deg); opacity: 0; }
             10% { opacity: 0.8; }
             90% { opacity: 0.8; }
             100% { transform: translateY(105vh) rotate(720deg) translateX(120px); opacity: 0; }
@@ -135,7 +135,7 @@
         }
 
         /* ==========================================
-           CSS: ESTRUTURA DE LAYOUT (LAYOUT)
+           CSS: ESTRUTURA DE LAYOUT
            ========================================== */
         header {
             background-color: rgba(250, 249, 245, 0.85);
@@ -192,10 +192,10 @@
             border: 1px solid var(--accent);
         }
 
-        /* Hero Splash */
+        /* Hero Splash - IMAGEM DE FUNDO ATUALIZADA (BLINDADA) */
         .hero {
-            background-image: linear-gradient(rgba(11, 34, 22, 0.6), rgba(11, 34, 22, 0.85)), 
-                             url('https://images.unsplash.com/photo-1595425970377-c9703d74081a?auto=format&fit=crop&w=1920&q=80');
+            background-image: linear-gradient(rgba(11, 34, 22, 0.65), rgba(11, 34, 22, 0.85)), 
+                             url('https://loremflickr.com/1920/1080/perfume,luxury,flowers');
             background-size: cover;
             background-position: center;
             height: 55vh;
@@ -248,6 +248,8 @@
 
         .img-wrapper img {
             width: 100%;
+            height: 450px;
+            object-fit: cover;
             border-radius: 6px;
             box-shadow: 0 15px 35px rgba(0,0,0,0.06);
             transition: var(--transition-smooth);
@@ -467,13 +469,8 @@
     </header>
 
     <main>
-        <!-- HERO -->
-        <div class="hero">
-            <h2>Alquimia de Sentidos</h2>
-            <p>Conectando emoções profundas através de criações puras, autorais e ecológicas.</p>
-        </div>
 
-        <!-- HISTÓRIA (REVEAL ON SCROLL) -->
+        <!-- HISTÓRIA (IMAGEM ATUALIZADA) -->
         <section id="historia" class="reveal">
             <div class="grid-2">
                 <div class="content-text">
@@ -481,18 +478,18 @@
                     <p>Fundada em 2010 pela perfumista <strong>Clara Almeida</strong>, a Floreal nasceu da necessidade de materializar lembranças preciosas. Inspirando-se no conhecimento botânico de sua família e refinando-o com tecnologia sustentável em Montenegro (RS), a marca expandiu suas fronteiras e hoje exporta luxo consciente para o mundo.</p>
                 </div>
                 <div class="img-wrapper">
-                    <img src="https://images.unsplash.com/photo-1608528577891-eb055944f2e7?auto=format&fit=crop&w=800&q=80" alt="Equipamentos do laboratório Floreal">
+                    <img src="https://loremflickr.com/800/600/perfume,laboratory,glass" alt="Equipamentos do laboratório Floreal">
                 </div>
             </div>
         </section>
 
-        <!-- VITRINE (REVEAL ON SCROLL) -->
+        <!-- VITRINE (IMAGENS ATUALIZADAS) -->
         <section id="produtos" class="reveal">
             <h2 class="section-title">Coleções Exclusivas</h2>
             <div class="produtos-grid">
                 <!-- Perfume 1 -->
                 <div class="card">
-                    <div class="card-img"><img src="https://images.unsplash.com/photo-158840574880-12d1d2a59f75?auto=format&fit=crop&w=800&q=80" alt="Frasco de Luz do Amanhã"></div>
+                    <div class="card-img"><img src="https://loremflickr.com/600/600/perfume,bottle" alt="Frasco de Luz do Amanhã"></div>
                     <div class="card-info">
                         <h3>Luz do Amanhã</h3>
                         <p>Toque sutil de Flor de Laranjeira e a nobreza da Baunilha Bourbon.</p>
@@ -501,7 +498,7 @@
                 </div>
                 <!-- Perfume 2 -->
                 <div class="card">
-                    <div class="card-img"><img src="https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=800&q=80" alt="Frasco de Brisa do Mar"></div>
+                    <div class="card-img"><img src="https://loremflickr.com/600/600/fragrance,luxury" alt="Frasco de Brisa do Mar"></div>
                     <div class="card-info">
                         <h3>Brisa do Mar</h3>
                         <p>Frescor revigorante de Notas Cítricas Italianas misturadas ao Jasmim.</p>
@@ -510,7 +507,7 @@
                 </div>
                 <!-- Perfume 3 -->
                 <div class="card">
-                    <div class="card-img"><img src="https://images.unsplash.com/photo-1616949755610-8c9bbc08f138?auto=format&fit=crop&w=800&q=80" alt="Frasco de Perfume customizado"></div>
+                    <div class="card-img"><img src="https://loremflickr.com/600/600/cosmetics,flowers" alt="Frasco de Perfume customizado"></div>
                     <div class="card-info">
                         <h3>Frasco Autoral</h3>
                         <p>Participe da nossa experiência e monte sua própria fórmula olfativa.</p>
@@ -520,24 +517,24 @@
             </div>
         </section>
 
-        <!-- LABORATÓRIO DIGITAL INTERATIVO (REVEAL ON SCROLL) -->
+        <!-- LABORATÓRIO DIGITAL INTERATIVO -->
         <section id="laboratorio" class="reveal">
             <h2 class="section-title">Laboratório Interativo</h2>
             
             <div class="lab-container">
-                <!-- SISTEMA INTERATIVO 1: QUIZ -->
+                <!-- QUIZ -->
                 <div class="interactive-box">
                     <h3>✨ Inteligência de Aromas</h3>
-                    <p>Selecione sua intenção atual. O sistema mapeará as propriedades botânicas recomendadas para você:</p>
+                    <p>Selecione sua intenção atual. O system mapeará as propriedades botânicas recomendadas para você:</p>
                     <div class="quiz-flex">
                         <button class="custom-btn" onclick="LaboratorioDigital.processarQuiz('calma')">Busco Calma & Foco</button>
-                        <button class="custom-btn" onclick="LaboratorioDigital.processarQuiz('energia')">Quero Energia & Vigor</button>
+                        <button class="custom-btn" onclick="LaboratorioDigital.processarQuiz('energy')">Quero Energia & Vigor</button>
                         <button class="custom-btn" onclick="LaboratorioDigital.processarQuiz('luxo')">Preservo Mistério & Luxo</button>
                     </div>
                     <div id="quiz-output-panel" class="panel-output"></div>
                 </div>
 
-                <!-- SISTEMA INTERATIVO 2: CUSTOMIZAÇÃO EM TEMPO REAL -->
+                <!-- CONSTRUTOR EM TEMPO REAL -->
                 <div class="interactive-box">
                     <h3>🧪 Construtor de Perfume Sob Medida</h3>
                     <p>Preencha os dados e manipule as essências para visualizar seu frasco personalizado imediatamente:</p>
@@ -581,11 +578,11 @@
             </div>
         </section>
 
-        <!-- SUSTENTABILIDADE -->
+        <!-- SUSTENTABILIDADE (IMAGEM ATUALIZADA) -->
         <section id="sustentabilidade" class="reveal">
             <div class="grid-2">
                 <div class="img-wrapper">
-                    <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=800&q=80" alt="Folhas verdes simbolizando eco-responsabilidade">
+                    <img src="https://loremflickr.com/800/600/nature,leaves,garden" alt="Folhas verdes simbolizando eco-responsabilidade">
                 </div>
                 <div class="content-text">
                     <h2 class="section-title" style="text-align: left; margin-bottom: 30px;">Responsabilidade Arte</h2>
@@ -601,9 +598,9 @@
 
     <!-- ==========================================
        JAVASCRIPT: ARQUITETURA MODULAR DO SITE
-       ========================================== */ -->
+       ========================================== -->
     <script>
-        // MODULE 1: ANIMAÇÃO DA CHUVA DE PÉTALAS (ROSAS E OURO)
+        // MODULE 1: ANIMAÇÃO DA CHUVA DE PÉTALAS
         const EfeitoPetalas = (() => {
             const container = document.getElementById('petals-container');
             let ativo = true;
@@ -613,24 +610,20 @@
                 const petala = document.createElement('div');
                 petala.classList.add('petal');
                 
-                // Variabilidade geométrica e física das pétalas
-                const dimensão = Math.random() * 14 + 10;
-                petala.style.width = `${dimensão}px`;
-                petala.style.height = `${dimensão}px`;
+                const dimensao = Math.random() * 14 + 10;
+                petala.style.width = `${dimensao}px`;
+                petala.style.height = `${dimensao}px`;
                 petala.style.left = `${Math.random() * 100}vw`;
                 
-                const tempoAnimação = Math.random() * 5 + 4; // 4s a 9s
-                petala.style.animationDuration = `${tempoAnimação}s`;
+                const tempoAnimacao = Math.random() * 5 + 4; 
+                petala.style.animationDuration = `${tempoAnimacao}s`;
                 
-                // Chance de gerar uma pétala dourada de luxo
                 if(Math.random() > 0.88) {
                     petala.style.background = "linear-gradient(135deg, #d4af37, #f3e5ab)";
                 }
 
                 container.appendChild(petala);
-
-                // Garbage Collection: Remove do DOM para evitar gargalo de memória
-                setTimeout(() => petala.remove(), tempoAnimação * 1000);
+                setTimeout(() => petala.remove(), tempoAnimacao * 1000);
             }
 
             return {
@@ -662,7 +655,6 @@
                 containerToast.appendChild(toast);
                 setTimeout(() => toast.classList.add('show'), 50);
 
-                // Remove o aviso visual após 3.5 segundos
                 setTimeout(() => {
                     toast.classList.remove('show');
                     setTimeout(() => toast.remove(), 400);
@@ -687,7 +679,7 @@
                     
                     const respostas = {
                         calma: "<strong>Recomendação Alquímica:</strong> Alinhamos sua busca à <strong>Lavanda Silvestre</strong> e notas de fundo macias. Experimente o clássico <em>Luz do Amanhã</em> para equilibrar seu bem-estar.",
-                        energia: "<strong>Recomendação Alquímica:</strong> Seu momento pede <strong>Bergamota Cítrica</strong> e acordes oceânicos vibrantes. O perfume <em>Brisa do Mar</em> é ideal para injetar foco e vigor no seu dia.",
+                        energy: "<strong>Recomendação Alquímica:</strong> Seu momento pede <strong>Bergamota Cítrica</strong> e acordes oceânicos vibrantes. O perfume <em>Brisa do Mar</em> é ideal para injetar foco e vigor no seu dia.",
                         luxo: "<strong>Recomendação Alquímica:</strong> Sofisticação pura. Indicamos nossa <strong>Oficina Customizada</strong> para trabalhar com o absoluto de <em>Rosas de Grasse</em> e construir sua assinatura exclusiva."
                     };
                     painel.innerHTML = respostas[opcao] || "";
@@ -717,16 +709,16 @@
             };
         })();
 
-        // MODULE 5: DISPARADOR DO REVEAL ON SCROLL (APARIÇÃO GRADUAL)
+        // MODULE 5: DISPARADOR DO REVEAL ON SCROLL
         const DisparadorScroll = (() => {
-            const seções = document.querySelectorAll('.reveal');
+            const secoes = document.querySelectorAll('.reveal');
             
             function checarScroll() {
                 const corteDisparo = (window.innerHeight / 5) * 4;
-                seções.forEach(seção => {
-                    const topoSeção = seção.getBoundingClientRect().top;
-                    if(topoSeção < corteDisparo) {
-                        seção.classList.add('active');
+                secoes.forEach(secao => {
+                    const topoSecao = secao.getBoundingClientRect().top;
+                    if(topoSecao < corteDisparo) {
+                        secao.classList.add('active');
                     }
                 });
             }
@@ -734,12 +726,12 @@
             return {
                 escutar: () => {
                     window.addEventListener('scroll', checarScroll);
-                    checarScroll(); // Executa uma vez no início caso o usuário já esteja no meio da página
+                    checarScroll();
                 }
             };
         })();
 
-        // INICIALIZAÇÃO GERAL DO SISTEMA
+        // INICIALIZAÇÃO
         document.addEventListener('DOMContentLoaded', () => {
             EfeitoPetalas.inicializar();
             DisparadorScroll.escutar();
