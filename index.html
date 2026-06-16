@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+    <!-- SEO & METADADOS BÁSICOS -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Floreal | Perfumaria Artesanal Sustentável</title>
@@ -8,23 +9,25 @@
     <meta name="keywords" content="perfumaria artesanal, sustentabilidade, perfumes de luxo, cosméticos orgânicos, Floreal">
     <meta name="author" content="Floreal Haute Parfumerie">
 
+    <!-- OPEN GRAPH / FACEBOOK / LINKEDIN -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://seunome.github.io/floreal/">
     <meta property="og:title" content="Floreal | Perfumaria Artesanal Sustentável">
     <meta property="og:description" content="Fragrâncias de luxo inspiradas na natureza e criadas com responsabilidade ecológica extrema. Conheça nossa assinatura olfativa.">
-    <meta property="og:image" content="https://loremflickr.com/1200/630/perfume,luxury">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=1200&q=80">
 
+    <!-- TWITTER CARD -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:title" content="Floreal | Perfumaria Artesanal Sustentável">
     <meta property="twitter:description" content="Fragrâncias de luxo inspiradas na natureza.">
-    <meta property="twitter:image" content="https://loremflickr.com/1200/630/perfume,luxury">
+    <meta property="twitter:image" content="https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=1200&q=80">
 
+    <!-- FONTES PREMIUM (POPPINS & PLAYFAIR DISPLAY) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
     <style>
-        /* INJEÇÃO AUTOMÁTICA DO ARQUIVO: css/style.css */
         :root {
             --primary: #2D6A4F;
             --secondary: #40916C;
@@ -100,10 +103,10 @@
         .menu-hamburger span { display: block; width: 28px; height: 2px; background: var(--white); margin: 6px 0; transition: 0.4s; }
         header.scrolled .menu-hamburger span { background: var(--primary); }
 
-        /* HERO SECTION COM MATRIZ PARALLAX */
+        /* HERO SECTION COM MATRIZ PARALLAX REFEITA */
         .hero {
             height: 100vh; position: relative; display: flex; align-items: center; padding: 0 8%;
-            background: linear-gradient(rgba(11, 33, 22, 0.5), rgba(11, 33, 22, 0.75)), url('https://loremflickr.com/1920/1080/perfume,luxury,nature') no-repeat center center/cover;
+            background: linear-gradient(rgba(11, 33, 22, 0.55), rgba(11, 33, 22, 0.75)), url('https://images.unsplash.com/photo-1616949755610-8c9bbc08f138?auto=format&fit=crop&w=1920&q=85') no-repeat center center/cover;
             background-attachment: fixed; color: var(--white);
         }
         .hero-content { max-width: 650px; z-index: 2; }
@@ -158,10 +161,10 @@
         .produtos-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; max-width: 1200px; margin: 0 auto; }
         .product-card { background: var(--white); overflow: hidden; border-radius: 0; box-shadow: 0 10px 35px rgba(0,0,0,0.02); transition: var(--transition); position: relative; }
         .product-card:hover { transform: translateY(-5px); box-shadow: 0 25px 50px rgba(0,0,0,0.07); }
-        .product-img { width: 100%; height: 380px; overflow: hidden; position: relative; }
+        .product-img { width: 100%; height: 420px; overflow: hidden; position: relative; background: #f5f5f5; }
         .product-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
         .product-card:hover .product-img img { transform: scale(1.06); }
-        .product-badge { position: absolute; top: 20px; left: 20px; background: var(--primary); color: var(--white); padding: 6px 15px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 500; }
+        .product-badge { position: absolute; top: 20px; left: 20px; background: var(--primary); color: var(--white); padding: 6px 15px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 500; z-index: 2; }
         .product-info { padding: 30px; text-align: center; }
         .product-info h3 { font-family: var(--font-title); font-size: 1.5rem; color: var(--primary); margin-bottom: 8px; }
         .product-notes { font-size: 0.8rem; text-transform: uppercase; color: var(--luxury); letter-spacing: 1px; margin-bottom: 15px; font-weight: 600; }
@@ -213,7 +216,7 @@
         .exp-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; }
         .exp-card { background: var(--white); box-shadow: 0 10px 30px rgba(0,0,0,0.02); transition: var(--transition); overflow: hidden; }
         .exp-card:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
-        .exp-img { height: 220px; overflow: hidden; }
+        .exp-img { height: 240px; overflow: hidden; background: #e0e0e0; }
         .exp-img img { width: 100%; height: 100%; object-fit: cover; }
         .exp-info { padding: 25px; text-align: center; }
         .exp-info h3 { font-family: var(--font-title); color: var(--primary); font-size: 1.25rem; margin-bottom: 10px; }
@@ -268,7 +271,7 @@
         #backToTop.show { opacity: 1; visibility: visible; }
         #backToTop:hover { background: var(--luxury); color: var(--primary); }
 
-        /* RESPONSIVIDADE EXTREMA MOBILE FIRST MATRICIAL */
+        /* RESPONSIVIDADE */
         @media (max-width: 992px) {
             header { padding: 20px 5%; }
             .menu-hamburger { display: block; }
@@ -293,13 +296,16 @@
 </head>
 <body>
 
+    <!-- ANIMATED LOADER SCREEN -->
     <div id="loader" aria-hidden="true">
         <div class="loader-logo">FLOREAL</div>
         <div class="loader-bar"></div>
     </div>
 
+    <!-- BOTÃO FLUTUANTE VOLTAR AO TOPO -->
     <button id="backToTop" aria-label="Voltar para o topo da página">↑</button>
 
+    <!-- HEADER / MENU FIXO -->
     <header id="mainHeader">
         <a href="#" class="logo" aria-label="Floreal Home">FLOREAL</a>
         <button class="menu-hamburger" id="hamburgerBtn" aria-label="Abrir Menu Executivo" aria-expanded="false">
@@ -321,6 +327,7 @@
         </nav>
     </header>
 
+    <!-- HERO SECTION (IMAGEM CORRIGIDA: ATELIÊ DE PERFUMARIA PREMIUM) -->
     <section class="hero" id="home">
         <div class="hero-content">
             <h1>Transformando Emoções em Fragrâncias Inesquecíveis</h1>
@@ -333,6 +340,7 @@
     </section>
 
     <main>
+        <!-- SOBRE A FLOREAL (TIMELINE) -->
         <section id="historia" class="reveal">
             <div class="section-header">
                 <h2>Sobre a Floreal</h2>
@@ -389,6 +397,7 @@
             </div>
         </section>
 
+        <!-- MISSÃO, VISÃO E VALORES -->
         <section id="valores" class="reveal" style="background:#FAFBF9;">
             <div class="section-header">
                 <h2>Diretrizes Estratégicas</h2>
@@ -419,16 +428,18 @@
             </div>
         </section>
 
+        <!-- VITRINE DE PRODUTOS PREMIUM (IMAGENS CORRIGIDAS: FRASCOS REAIS E SOFISTICADOS) -->
         <section id="produtos" class="reveal">
             <div class="section-header">
                 <h2>Nossas Coleções</h2>
                 <p>A Alquimia da Alta Perfumaria</p>
             </div>
             <div class="produtos-grid">
+                <!-- Produto 1 -->
                 <div class="product-card">
                     <span class="product-badge">Linha Clássicos</span>
                     <div class="product-img">
-                        <img src="https://loremflickr.com/600/700/perfume,luxury,bottle?lock=1" alt="Frasco do perfume Luz do Amanhã">
+                        <img src="https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=600&h=800&q=80" alt="Frasco minimalista do perfume Luz do Amanhã com fundo limpo">
                     </div>
                     <div class="product-info">
                         <h3>Luz do Amanhã</h3>
@@ -437,10 +448,11 @@
                         <button class="btn-premium btn-solid" style="width:100%; padding:12px;">Comprar Fragrância</button>
                     </div>
                 </div>
+                <!-- Produto 2 -->
                 <div class="product-card">
                     <span class="product-badge">Coleção Primavera</span>
                     <div class="product-img">
-                        <img src="https://loremflickr.com/600/700/perfume,nature,bottle?lock=2" alt="Frasco do perfume Brisa do Mar">
+                        <img src="https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=600&h=800&q=80" alt="Frasco elegante de perfume cercado por elementos naturais">
                     </div>
                     <div class="product-info">
                         <h3>Brisa do Mar</h3>
@@ -449,10 +461,11 @@
                         <button class="btn-premium btn-solid" style="width:100%; padding:12px;">Comprar Fragrância</button>
                     </div>
                 </div>
+                <!-- Produto 3 -->
                 <div class="product-card">
                     <span class="product-badge">Linha Especial</span>
                     <div class="product-img">
-                        <img src="https://loremflickr.com/600/700/perfume,artisan,cosmetics?lock=3" alt="Produtos da Linha Especial Floreal">
+                        <img src="https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=600&h=800&q=80" alt="Frasco de vidro âmbar sofisticado de perfumaria artesanal">
                     </div>
                     <div class="product-info">
                         <h3>Arte & Essência</h3>
@@ -463,6 +476,7 @@
                 </div>
             </div>
 
+            <!-- PRODUTOS COMPLEMENTARES -->
             <div class="section-header" style="margin-top:100px; margin-bottom:50px;">
                 <h3>Cuidados Complementares</h3>
             </div>
@@ -490,6 +504,7 @@
             </div>
         </section>
 
+        <!-- EXPERIÊNCIA DE PERFUME PERSONALIZADO -->
         <section id="personalizado" class="custom-perfume reveal">
             <div class="custom-text">
                 <span style="color:var(--luxury); font-weight:600; text-transform:uppercase; letter-spacing:2px; font-size:0.85rem;">Inovação Floreal Lab</span>
@@ -546,6 +561,7 @@
             </div>
         </section>
 
+        <!-- SUSTENTABILIDADE & CONTADORES ANIMADOS -->
         <section id="sustentabilidade" class="sustentabilidade reveal">
             <div class="section-header">
                 <h2>Sustentabilidade Viva</h2>
@@ -565,7 +581,7 @@
                 <div class="sust-item">
                     <h3 class="counter" data-target="100">0</h3>
                     <h4>% Embalagens Recicláveis</h4>
-                    <p>Logística reversa ativa e ciclo total de reaproveitamento.</p>
+                    <p>Logística reversa activa e ciclo total de reaproveitamento.</p>
                 </div>
                 <div class="sust-item">
                     <h3 class="counter" data-target="15">0</h3>
@@ -575,6 +591,7 @@
             </div>
         </section>
 
+        <!-- RECONHECIMENTOS & PREMIAÇÕES -->
         <section id="reconhecimentos" class="reveal">
             <div class="section-header">
                 <h2>Reconhecimentos Nacionais</h2>
@@ -596,6 +613,7 @@
             </div>
         </section>
 
+        <!-- EXPERIÊNCIA FLOREAL (IMAGENS CORRIGIDAS: BOUTIQUES E ESPAÇOS CONCEITO) -->
         <section id="experiencia" class="reveal" style="background:#FAFBF9;">
             <div class="section-header">
                 <h2>Experiência Omnichannel</h2>
@@ -603,28 +621,28 @@
             </div>
             <div class="exp-grid">
                 <div class="exp-card">
-                    <div class="exp-img"><img src="https://loremflickr.com/500/400/store,luxury?lock=10" alt="Interior de nossa Loja Conceito"></div>
+                    <div class="exp-img"><img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=500&h=400&q=80" alt="Interior minimalista de uma loja conceito de fragrâncias de luxo"></div>
                     <div class="exp-info">
                         <h3>Loja Física</h3>
                         <p>Espaços imersivos de calmaria com visitas guiadas exclusivas e testes botânicos vivos.</p>
                     </div>
                 </div>
                 <div class="exp-card">
-                    <div class="exp-img"><img src="https://loremflickr.com/500/400/ecommerce,luxury?lock=11" alt="Dispositivo navegando no e-commerce"></div>
+                    <div class="exp-img"><img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=500&h=400&q=80" alt="Interface digital elegante de alta costura"></div>
                     <div class="exp-info">
                         <h3>E-commerce</h3>
                         <p>Loja online de alta performance com inteligência artificial para diagnósticos olfativos remotos.</p>
                     </div>
                 </div>
                 <div class="exp-card">
-                    <div class="exp-img"><img src="https://loremflickr.com/500/400/boutique,fashion?lock=12" alt="Boutique premium credenciada"></div>
+                    <div class="exp-img"><img src="https://images.unsplash.com/photo-1601924994987-69e26d50dc26?auto=format&fit=crop&w=500&h=400&q=80" alt="Boutique de alto luxo com frascos expostos harmonicamente"></div>
                     <div class="exp-info">
                         <h3>Boutiques Parceiras</h3>
                         <p>Distribuição altamente seleta em pontos de luxo e resorts espalhados por todo o território nacional.</p>
                     </div>
                 </div>
                 <div class="exp-card">
-                    <div class="exp-img"><img src="https://loremflickr.com/500/400/expo,event?lock=13" alt="Estande em feira internacional"></div>
+                    <div class="exp-img"><img src="https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=500&h=400&q=80" alt="Grande salão executivo decorado para exposição de marcas premium"></div>
                     <div class="exp-info">
                         <h3>Eventos e Feiras</h3>
                         <p>Participações marcantes nas principais exibições globais de design de cosméticos sustentáveis.</p>
@@ -633,6 +651,7 @@
             </div>
         </section>
 
+        <!-- HISTÓRIAS E CONEXÕES -->
         <section class="testimonials reveal">
             <div class="section-header">
                 <h2>Histórias e Conexões</h2>
@@ -646,7 +665,7 @@
                 <div class="test-card">
                     <p>"O perfume Luz do Amanhã me reconectou com as manhãs na fazenda da minha infância. É inacreditável como uma fragrância consegue traduzir uma textura de memória de forma tão nítida e sofisticada."</p>
                     <div class="test-author">
-                        <img src="https://loremflickr.com/100/100/woman,portrait?lock=20" alt="Retrato de Helena Albuquerque" class="test-author-img">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&h=100&q=80" alt="Retrato de Helena Albuquerque" class="test-author-img">
                         <div class="test-author-info">
                             <h4>Helena Albuquerque</h4>
                             <span>Arquiteta e Colecionadora</span>
@@ -656,7 +675,7 @@
                 <div class="test-card">
                     <p>"A proposta do perfume personalizado online superou todas as minhas expectativas. O processo de escolha é terapêutico e o produto final carrega uma aura de exclusividade incomparável."</p>
                     <div class="test-author">
-                        <img src="https://loremflickr.com/100/100/man,portrait?lock=21" alt="Retrato de Gabriel Mendonça" class="test-author-img">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&h=100&q=80" alt="Retrato de Gabriel Mendonça" class="test-author-img">
                         <div class="test-author-info">
                             <h4>Gabriel Mendonça</h4>
                             <span>Designer de Interiores</span>
@@ -666,6 +685,7 @@
             </div>
         </section>
 
+        <!-- ATENDIMENTO & FORMULÁRIO DE CONTATO -->
         <section id="contato" class="reveal">
             <div class="section-header">
                 <h2>Canal de Atendimento</h2>
@@ -729,6 +749,7 @@
         </section>
     </main>
 
+    <!-- FOOTER -->
     <footer>
         <div class="footer-grid">
             <div class="footer-brand">
@@ -760,7 +781,6 @@
     </footer>
 
     <script>
-        /* INJEÇÃO AUTOMÁTICA DO ARQUIVO: js/script.js */
         document.addEventListener('DOMContentLoaded', () => {
 
             // MODULE 1: REMOÇÃO DE LOADING ANIMATION SCREEN
@@ -806,7 +826,6 @@
                     hamburgerBtn.setAttribute('aria-expanded', isOpen);
                 });
 
-                // Fecha ao clicar em links no mobile
                 mainNav.querySelectorAll('a').forEach(link => {
                     link.addEventListener('click', () => {
                         mainNav.classList.remove('open');
@@ -827,7 +846,7 @@
                 });
             };
             window.addEventListener('scroll', checkReveal);
-            checkReveal(); // Executa inicialização no viewport atual
+            checkReveal();
 
             // MODULE 5: LABORATÓRIO DIGITAL - SIMULADOR INTERATIVO
             const inputName = document.getElementById('perfumeNameInput');
@@ -844,14 +863,14 @@
                 selectNote.addEventListener('change', updatePreview);
             }
 
-            // MODULE 6: CONTADORES ANIMADOS COM INTERSECTION OBSERVER
+            // MODULE 6: CONTADORES ANIMADOS
             const counters = document.querySelectorAll('.counter');
             const animateCounters = () => {
                 counters.forEach(counter => {
                     const target = +counter.getAttribute('data-target');
                     const updateCount = () => {
                         const current = +counter.innerText;
-                        const increment = target / 40; // Ajuste de velocidade da animação
+                        const increment = target / 40;
                         if (current < target) {
                             counter.innerText = Math.ceil(current + increment);
                             setTimeout(updateCount, 25);
@@ -875,10 +894,10 @@
                 }, { threshold: 0.3 });
                 observer.observe(countSection);
             } else if (counters.length > 0) {
-                animateCounters(); // Fallback imediato caso navegador antigo
+                animateCounters();
             }
 
-            // MODULE 7: VALIDAÇÃO INDUSTRIAL DO FORMULÁRIO DE CONTATO
+            // MODULE 7: VALIDAÇÃO DO FORMULÁRIO DE CONTATO
             const form = document.getElementById('florealContactForm');
             if (form) {
                 form.addEventListener('submit', (e) => {
@@ -889,8 +908,6 @@
                     const email = document.getElementById('txtEmail');
                     const subject = document.getElementById('txtSubject');
                     const message = document.getElementById('txtMessage');
-
-                    // RegEx para validação estrita de padrão de e-mail
                     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
                     if (name.value.trim() === '') {
