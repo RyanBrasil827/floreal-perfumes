@@ -3,84 +3,114 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Floreal | Alta Perfumaria Artesanal</title>
+    <title>Floreal | Alta Perfumaria & Sustentabilidade</title>
+    <!-- Fontes de Luxo e Alta Legibilidade -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    
     <style>
-        /* Estilos Globais Modernos */
+        /* Variáveis de Cores de Luxo */
         :root {
-            --primary-color: #0F2C1B; /* Verde Esmeralda Luxo */
-            --accent-color: #D4AF37;  /* Dourado Real */
-            --text-dark: #1A1A1A;
+            --primary-color: #0B2216;      /* Verde floresta profundo */
+            --accent-color: #C5A059;       /* Dourado champanhe fosco */
+            --text-dark: #1E221F;
             --text-light: #F4F6F4;
+            --bg-light: #FAF9F5;          /* Off-white sofisticado */
             --bg-card: #FFFFFF;
-            --bg-light: #FAF8F5;     /* Tom de areia bem suave */
+            --font-base: 16px;
         }
-        
+
+        /* Reset e Configurações de Acessibilidade Base */
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
+            scroll-behavior: smooth;
         }
 
         body {
-            font-family: 'Playfair Display', 'Georgia', serif;
+            font-family: 'Inter', sans-serif;
+            font-size: var(--font-base);
             color: var(--text-dark);
             background-color: var(--bg-light);
-            line-height: 1.7;
+            line-height: 1.8;
+            transition: background-color 0.3s, color 0.3s;
         }
 
-        h1, h2, h3 {
+        h1, h2, h3, h4 {
+            font-family: 'Cinzel', serif;
             font-weight: 700;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
         }
 
-        /* Cabeçalho Premium */
+        /* CLASSE DE ALTO CONTRASTE (Ativada via JS) */
+        body.alto-contraste {
+            --primary-color: #FFFFFF;
+            --accent-color: #FFFF00; /* Amarelo acessível */
+            --text-dark: #FFFFFF;
+            --text-light: #000000;
+            --bg-light: #000000;
+            --bg-card: #121212;
+        }
+        body.alto-contraste header, 
+        body.alto-contraste .card, 
+        body.alto-contraste .atendimento-item {
+            border: 2px solid #FFF !important;
+        }
+
+        /* Cabeçalho Minimalista e Intuitivo */
         header {
-            background-color: rgba(255, 255, 255, 0.95);
+            background-color: rgba(250, 249, 245, 0.95);
             padding: 25px 8%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.03);
             position: sticky;
             top: 0;
-            z-index: 1000;
+            z-index: 999;
             backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(197, 160, 89, 0.2);
         }
 
         header h1 {
-            font-size: 2.2em;
+            font-size: 2em;
             color: var(--primary-color);
-            letter-spacing: 4px;
-            font-weight: 800;
+            font-weight: 900;
+            letter-spacing: 6px;
         }
 
         nav ul {
             list-style: none;
             display: flex;
-            gap: 30px;
+            gap: 35px;
         }
 
         nav a {
             text-decoration: none;
-            color: var(--primary-color);
+            color: var(--text-dark);
             font-weight: 600;
             text-transform: uppercase;
-            font-size: 0.85em;
+            font-size: 0.8em;
             letter-spacing: 2px;
-            transition: color 0.3s;
+            transition: color 0.3s, border-bottom 0.3s;
+            padding-bottom: 5px;
         }
 
-        nav a:hover {
+        nav a:hover, nav a:focus {
             color: var(--accent-color);
+            outline: 2px solid transparent;
+            border-bottom: 2px solid var(--accent-color);
         }
 
-        /* Hero Section com Imagem Viva e Impactante */
+        /* Hero Banner Premium */
         .hero {
-            background-image: linear-gradient(rgba(15, 44, 27, 0.55), rgba(15, 44, 27, 0.75)), 
-                             url('https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=1920&q=80');
+            background-image: linear-gradient(rgba(11, 34, 22, 0.6), rgba(11, 34, 22, 0.8)), 
+                             url('https://images.unsplash.com/photo-1547887537-6158d64c35b3?auto=format&fit=crop&w=1920&q=80');
             background-size: cover;
             background-position: center;
-            height: 75vh;
+            height: 80vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -91,194 +121,216 @@
         }
 
         .hero h2 {
-            font-size: 3.8em;
-            margin-bottom: 15px;
-            letter-spacing: 3px;
-            text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+            font-size: 4em;
+            margin-bottom: 20px;
+            letter-spacing: 4px;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.4);
         }
 
         .hero p {
-            font-size: 1.4em;
-            max-width: 700px;
-            font-style: italic;
-            color: #E2E8E2;
-            text-shadow: 1px 1px 5px rgba(0,0,0,0.3);
+            font-size: 1.3em;
+            max-width: 750px;
+            font-weight: 300;
+            letter-spacing: 1px;
+            color: #EAEAEA;
         }
 
-        /* Seções de Conteúdo Estruturadas */
+        /* Layout de Seções */
         section {
-            padding: 80px 10%;
+            padding: 100px 8%;
             max-width: 1400px;
             margin: 0 auto;
         }
 
         .section-title {
             text-align: center;
-            font-size: 2.5em;
+            font-size: 2.6em;
             color: var(--primary-color);
-            margin-bottom: 50px;
-            position: relative;
+            margin-bottom: 60px;
+            text-transform: uppercase;
         }
 
         .section-title::after {
             content: '';
             display: block;
-            width: 60px;
-            height: 3px;
+            width: 80px;
+            height: 2px;
             background-color: var(--accent-color);
-            margin: 15px auto 0;
+            margin: 20px auto 0;
         }
 
         .grid-2 {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 60px;
+            gap: 80px;
             align-items: center;
         }
 
         .content-text p {
-            margin-bottom: 20px;
-            font-size: 1.1em;
-            color: #444;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin-bottom: 25px;
+            color: #4A4A4A;
+        }
+        body.alto-contraste .content-text p {
+            color: #FFF;
         }
 
-        .img-container {
-            position: relative;
-            border-radius: 15px;
+        .img-wrapper {
+            border-radius: 4px;
             overflow: hidden;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+            position: relative;
         }
 
-        .img-fluid {
+        .img-wrapper img {
             width: 100%;
             display: block;
-            transition: transform 0.5s;
+            transition: transform 0.6s ease;
         }
 
-        .img-container:hover .img-fluid {
-            transform: scale(1.05);
+        .img-wrapper:hover img {
+            transform: scale(1.04);
         }
 
-        /* Vitrine de Produtos de Alto Padrão (Cards Vivos) */
-        .produtos-container {
-            background-color: #F0EDE6;
-            width: 100%;
-            max-width: 100%;
+        /* Vitrine de Criações Sofisticadas */
+        .vitrine-bg {
+            background-color: #F3F1EC;
+            transition: background-color 0.3s;
+        }
+        body.alto-contraste .vitrine-bg {
+            background-color: #000;
         }
 
         .produtos-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 40px;
-            margin-top: 20px;
         }
 
         .card {
             background: var(--bg-card);
-            border-radius: 12px;
+            border: 1px solid rgba(0,0,0,0.03);
             overflow: hidden;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
-            text-align: center;
-            border-bottom: 4px solid transparent;
+            transition: transform 0.4s, box-shadow 0.4s;
         }
 
         .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(15, 44, 27, 0.15);
-            border-bottom: 4px solid var(--accent-color);
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px rgba(11, 34, 22, 0.1);
         }
 
-        .card-img-wrapper {
-            width: 100%;
-            height: 350px;
+        .card-img {
+            height: 420px;
             overflow: hidden;
         }
 
-        .card img {
+        .card-img img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.5s;
         }
 
-        .card:hover .card-img-wrapper img {
-            transform: scale(1.08);
-        }
-
-        .card-body {
-            padding: 30px 25px;
-        }
-
-        .card h3 {
-            font-size: 1.5em;
-            color: var(--primary-color);
-            margin-bottom: 12px;
-        }
-
-        .card p {
-            font-size: 1em;
-            color: #666;
-            font-family: 'Segoe UI', sans-serif;
-            font-style: italic;
-        }
-
-        /* Selos de Destaque / Rede de Atendimento */
-        .atendimento-list {
-            list-style: none;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 25px;
+        .card-info {
+            padding: 35px 30px;
             text-align: center;
         }
 
+        .card-info h3 {
+            font-size: 1.4em;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        /* Rede de Atendimento Intuitiva */
+        .atendimento-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 30px;
+        }
+
         .atendimento-item {
-            background: white;
-            padding: 30px 20px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.02);
-            border-top: 3px solid var(--primary-color);
+            background: var(--bg-card);
+            padding: 40px 30px;
+            text-align: center;
+            border-top: 4px solid var(--accent-color);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.02);
         }
 
         .atendimento-item h4 {
             color: var(--primary-color);
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             font-size: 1.2em;
         }
 
-        .atendimento-item p {
-            font-size: 0.95em;
-            color: #555;
-            font-family: 'Segoe UI', sans-serif;
+        /* Widget Flutuante de Acessibilidade */
+        .acessibilidade-widget {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--primary-color);
+            color: var(--bg-light);
+            padding: 15px;
+            border-radius: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            display: flex;
+            gap: 10px;
+            z-index: 10000;
+            border: 1px solid var(--accent-color);
         }
 
-        /* Rodapé Nobre */
+        .acessibilidade-btn {
+            background: transparent;
+            border: 1px solid rgba(255,255,255,0.3);
+            color: white;
+            padding: 8px 14px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 0.85em;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.2s;
+        }
+        body.alto-contraste .acessibilidade-btn {
+            color: #000;
+            background: #FFF;
+            border: 1px solid #000;
+        }
+
+        .acessibilidade-btn:hover, .acessibilidade-btn:focus {
+            background: var(--accent-color);
+            color: var(--primary-color);
+        }
+
+        /* Rodapé Fino */
         footer {
             background-color: var(--primary-color);
             color: var(--text-light);
             text-align: center;
-            padding: 50px 20px;
-            margin-top: 60px;
-            border-top: 5px solid var(--accent-color);
+            padding: 60px 20px;
+            border-top: 4px solid var(--accent-color);
         }
 
         footer p {
-            font-size: 1.1em;
-            letter-spacing: 1px;
-            margin-bottom: 10px;
+            letter-spacing: 2px;
+            font-size: 0.9em;
+            text-transform: uppercase;
         }
 
-        footer span {
-            font-size: 0.85em;
-            color: var(--accent-color);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-family: 'Segoe UI', sans-serif;
+        /* Responsividade */
+        @media (max-width: 900px) {
+            .grid-2 { grid-template-columns: 1fr; gap: 40px; }
+            header { flex-direction: column; gap: 20px; }
+            .hero h2 { font-size: 2.6em; }
         }
     </style>
 </head>
 <body>
+
+    <!-- Menu de Acessibilidade Fixo -->
+    <div class="acessibilidade-widget" role="toolbar" aria-label="Controles de Acessibilidade">
+        <button class="acessibilidade-btn" onclick="toggleContraste()" aria-label="Alternar alto contraste">🌓 Contraste</button>
+        <button class="acessibilidade-btn" onclick="alterarFonte(1)" aria-label="Aumentar tamanho do texto">A+</button>
+        <button class="acessibilidade-btn" onclick="alterarFonte(-1)" aria-label="Diminuir tamanho do texto">A-</button>
+    </div>
 
     <header>
         <h1>FLOREAL</h1>
@@ -292,105 +344,122 @@
         </nav>
     </header>
 
-    <div class="hero">
-        <h2>Alta Perfumaria Artesanal</h2>
-        <p>Capturando emoções profundas e memórias raras em fragrâncias vivas e atemporais.</p>
-    </div>
-
-    <section id="historia">
-        <div class="grid-2">
-            <div class="content-text">
-                <h2 class="section-title" style="text-align: left; margin-bottom: 30px;">Nossa Origem</h2>
-                <p>A <strong>Floreal</strong> foi fundada em 2010 por <strong>Clara Almeida</strong>, uma perfumista apaixonada cujo sonho era engarrafar sentimentos e memórias preciosas.</p>
-                <p>Unindo a sabedoria ancestral de sua avó herbalista ao rigor técnico da perfumaria moderna, as criações ganharam vida primeiro em Lavras do Sul e hoje se expandem a partir de Montenegro para conquistar a América Latina e a Europa.</p>
-                <p>Hoje, nossa equipe de 100 especialistas trabalha na constante lapidação de fragrâncias exclusivas e sustentáveis.</p>
-            </div>
-            <div class="img-container">
-                <img src="https://images.unsplash.com/photo-1608528577891-eb055944f2e7?auto=format&fit=crop&w=800&q=80" alt="Ingredientes Botânicos Floreal" class="img-fluid">
-            </div>
+    <main>
+        <div class="hero">
+            <h2>Laboratório de Emoções</h2>
+            <p>Conectando histórias, arte botânica e sofisticação através de perfumes raros e sustentáveis.</p>
         </div>
-    </section>
 
-    <div class="produtos-container">
-        <section id="produtos">
-            <h2 class="section-title">Criações Exclusivas</h2>
-            <p style="text-align: center; margin-top: -35px; margin-bottom: 40px; color: #555; font-style: italic;">Frascos lapidados que guardam histórias e experiências sensoriais raras.</p>
-            
-            <div class="produtos-grid">
-                <div class="card">
-                    <div class="card-img-wrapper">
-                        <img src="https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=800&q=80" alt="Linha Clássicos - Luz do Amanhã">
-                    </div>
-                    <div class="card-body">
-                        <h3>Linha Clássicos</h3>
-                        <p>Fragrâncias nostálgicas marcantes. Destaque para o icônico <strong>"Luz do Amanhã"</strong>, unindo notas ricas de flor de laranjeira e baunilha pura.</p>
-                    </div>
+        <section id="historia">
+            <div class="grid-2">
+                <div class="content-text">
+                    <h2 class="section-title" style="text-align: left; margin-bottom: 35px;">A Origem</h2>
+                    <p>Fundada em 2010 pela perfumista <strong>Clara Almeida</strong>, a Floreal nasceu da paixão por eternizar memórias através do olfato. Unindo os segredos botânicos de sua avó herbalista às técnicas francesas modernas de destilação, a marca estabeleceu suas bases na biodiversidade da Região Sul.</p>
+                    <p>Hoje, sediada em um parque fabril tecnológico em Montenegro (RS), nossa equipe de mais de 100 mestres perfumistas e técnicos projeta fragrâncias exclusivas exportadas diretamente para a Europa e América Latina.</p>
                 </div>
-                
-                <div class="card">
-                    <div class="card-img-wrapper">
-                        <img src="https://images.unsplash.com/photo-1615655404745-a10d241f1491?auto=format&fit=crop&w=800&q=80" alt="Coleção Primavera - Brisa do Mar">
-                    </div>
-                    <div class="card-body">
-                        <h3>Coleção Primavera</h3>
-                        <p>Fragrâncias sazonais e radiantes como o <strong>"Brisa do Mar"</strong>, uma explosão refrescante de cítricos nobres combinados ao jasmim vivo.</p>
-                    </div>
-                </div>
-                
-                <div class="card">
-                    <div class="card-img-wrapper">
-                        <img src="https://images.unsplash.com/photo-1523293182086-7651a899d37f?auto=format&fit=crop&w=800&q=80" alt="Linha Especial Personalizada">
-                    </div>
-                    <div class="card-body">
-                        <h3>Perfume Personalizado</h3>
-                        <p>Sua identidade em forma de aroma. Workshops exclusivos (online e presenciais) para desenhar sua assinatura olfativa única.</p>
-                    </div>
+                <div class="img-wrapper">
+                    <!-- Nova Imagem de História: Conceito laboratório botânico premium de luxo -->
+                    <img src="https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=800&q=80" alt="Processo de seleção de essências botânicas finas">
                 </div>
             </div>
         </section>
-    </div>
 
-    <section id="atendimento">
-        <h2 class="section-title">Rede de Atendimento</h2>
-        <div class="atendimento-list">
-            <div class="atendimento-item">
-                <h4>Loja Conceito</h4>
-                <p>Espaço acolhedor na serra gaúcha com visitas guiadas ao laboratório de fragrâncias.</p>
-            </div>
-            <div class="atendimento-item">
-                <h4>E-commerce Interativo</h4>
-                <p>Plataforma digital premium para personalização e entrega global com segurança.</p>
-            </div>
-            <div class="atendimento-item">
-                <h4>Boutiques Parceiras</h4>
-                <p>Pontos de venda selecionados que compartilham de nossa filosofia ecológica e ética.</p>
-            </div>
-            <div class="atendimento-item">
-                <h4>Eventos e Feiras</h4>
-                <p>Presença constante nos principais circuitos de alta beleza e feiras de design autoral.</p>
-            </div>
-        </div>
-    </section>
+        <div class="vitrine-bg">
+            <section id="produtos">
+                <h2 class="section-title">Alta Perfumaria</h2>
+                
+                <div class="produtos-grid">
+                    <!-- CARD 1: Imagem Viva/Cristal Âmbar de Luxo -->
+                    <div class="card">
+                        <div class="card-img">
+                            <img src="https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=800&q=80" alt="Frasco luxuoso de vidro facetado com notas de baunilha">
+                        </div>
+                        <div class="card-info">
+                            <h3>Linha Clássicos</h3>
+                            <p>Memórias nostálgicas requintadas. Apresentamos <em>"Luz do Amanhã"</em>, uma obra-prima unindo notas profundas de flor de laranjeira e baunilha pura.</p>
+                        </div>
+                    </div>
 
-    <section id="sustentabilidade" style="background-color: #FAF8F5; max-width: 100%;">
-        <div style="max-width: 1400px; margin: 0 auto;" class="grid-2">
-            <div class="img-container">
-                <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=800&q=80" alt="Compromisso Sustentável Floreal" class="img-fluid">
-            </div>
-            <div class="content-text">
-                <h2 class="section-title" style="text-align: left; margin-bottom: 30px;">Ética e Reconhecimento</h2>
-                <p>Na Floreal, o luxo caminha lado a lado com a preservação. Nossos ativos são orgânicos certificados, obtidos através do comércio justo, e nossas embalagens externas utilizam materiais 100% recicláveis.</p>
-                <p>Essa dedicação à inovação responsável nos orgulha com as maiores honrarias do setor:</p>
-                <p>🏆 <strong>Prêmio Atualidade Cosmética</strong> – O Oscar da Perfumaria na América Latina.<br>
-                   🏅 <strong>Prêmio ABIHPEC-Beleza Brasil</strong> – Reconhecimento máximo à longevidade e inovação sustentável.</p>
-            </div>
+                    <!-- CARD 2: Imagem Esmeralda/Vibrante Rara -->
+                    <div class="card">
+                        <div class="card-img">
+                            <img src="https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=800&q=80" alt="Frasco sofisticado verde esmeralda com reflexos dourados">
+                        </div>
+                        <div class="card-info">
+                            <h3>Coleção Primavera</h3>
+                            <p>Fragrâncias sazonais vibrantes. Sinta a vivacidade do <em>"Brisa do Mar"</em>, combinando o frescor cítrico nobre com o jasmim imperial.</p>
+                        </div>
+                    </div>
+
+                    <!-- CARD 3: Imagem Minimalista de Alta Costura/Customizada -->
+                    <div class="card">
+                        <div class="card-img">
+                            <img src="https://images.unsplash.com/photo-1523293182086-7651a899d37f?auto=format&fit=crop&w=800&q=80" alt="Frasco de alta perfumaria conceitual com caixa de veludo">
+                        </div>
+                        <div class="card-info">
+                            <h3>Fragrâncias Personalizadas</h3>
+                            <p>Sua assinatura olfativa única. Workshops de criação assistida (presenciais e online) para formular seu frasco exclusivo.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </div>
-    </section>
+
+        <section id="atendimento">
+            <h2 class="section-title">Rede de Atendimento</h2>
+            <div class="atendimento-grid">
+                <div class="atendimento-item">
+                    <h4>Loja Conceito</h4>
+                    <p>Espaço imersivo com visitas guiadas e experimentação sensorial exclusiva das essências.</p>
+                </div>
+                <div class="atendimento-item">
+                    <h4>E-Commerce Premium</h4>
+                    <p>Ambiente digital intuitivo com assistente virtual para personalização de pedidos.</p>
+                </div>
+                <div class="atendimento-item">
+                    <h4>Boutiques e Parceiros</h4>
+                    <p>Seleção rigorosa de curadorias e lojas naturais alinhadas aos ideais de sustentabilidade.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="sustentabilidade" style="border-top: 1px solid rgba(0,0,0,0.05);">
+            <div class="grid-2">
+                <div class="img-wrapper">
+                    <!-- Nova imagem de Sustentabilidade: Embalagem eco-friendly minimalista de alto luxo -->
+                    <img src="https://images.unsplash.com/photo-1605240523091-a1e646eb9018?auto=format&fit=crop&w=800&q=80" alt="Embalagens recicláveis finas e ingredientes ecológicos de luxo">
+                </div>
+                <div class="content-text">
+                    <h2 class="section-title" style="text-align: left; margin-bottom: 35px;">Compromisso Ético</h2>
+                    <p>Para a Floreal, a verdadeira sofisticação é responsável. Nossos ativos são cultivados por parceiros ecológicos de comércio justo e nossas embalagens externas são manufaturadas com vidro e papéis 100% recicláveis.</p>
+                    <p>Esse rigor artístico e ecológico nos consagrou com as honrarias máximas do setor de cosméticos:</p>
+                    <p>🏆 <strong>Prêmio Atualidade Cosmética</strong><br><em>O reconhecimento máximo da alta perfumaria das Américas.</em></p>
+                    <p>🏅 <strong>Prêmio ABIHPEC-Beleza Brasil</strong><br><em>Selo nacional de excelência em inovação e longevidade industrial.</em></p>
+                </div>
+            </div>
+        </section>
+    </main>
 
     <footer>
-        <p>&copy; 2026 Floreal Perfumes Artesanais. Todos os direitos reservados.</p>
-        <span>Luxo Consciente • Beleza Natural • Arte Olfativa</span>
+        <p>&copy; 2026 Floreal Haute Parfumerie. Todos os direitos reservados.</p>
     </footer>
 
+    <!-- Script de Inteligência de Acessibilidade -->
+    <script>
+        // Função do Alto Contraste
+        function toggleContraste() {
+            document.body.classList.toggle('alto-contraste');
+        }
+
+        // Função para Mudar Tamanho da Fonte proporcionalmente
+        let tamanhoAtual = 16;
+        function alterarFonte(direcao) {
+            tamanhoAtual += (direcao * 2);
+            // Limites de segurança visual
+            if(tamanhoAtual < 12) tamanhoAtual = 12;
+            if(tamanhoAtual > 26) tamanhoAtual = 26;
+            document.documentElement.style.setProperty('--font-base', tamanhoAtual + 'px');
+        }
+    </script>
 </body>
 </html>
